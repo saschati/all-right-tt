@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styles from './AlmostDone.module.scss'
 import classNames from 'classnames/bind'
 import Text from '@/UI/Text'
-import mascot from '@/assets/img/quiz/mascot.png'
+import mascot from '@/assets/img/quiz/charlie.svg'
 import Button, { type ButtonProps } from '@/UI/Button'
 
 const cx = classNames.bind(styles)
