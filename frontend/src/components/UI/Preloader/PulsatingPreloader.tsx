@@ -21,12 +21,7 @@ const PulsatingPreloader: React.FC<PulsatingPreloaderProps> = ({
 }): JSX.Element => {
   return (
     <div
-      className={cx(
-        'preloader',
-        `preloader_color_${color}`,
-        `preloader_size_${size}`,
-        `preloader_weight_${weight}`,
-      )}
+      className={cx('preloader', `preloader_color_${color}`, `preloader_size_${size}`, `preloader_weight_${weight}`)}
     />
   )
 }

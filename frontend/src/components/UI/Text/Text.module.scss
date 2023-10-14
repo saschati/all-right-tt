@@ -1,7 +1,9 @@
 @use '@/styles/core/functions' as f;
 @use '@/styles/core/mixin' as m;
 
-.title {
+.text {
+  @include m.text($w: 500, $fs: normal);
+
   &_position {
     &_start {
       @include m.text($ta: start);
@@ -14,7 +16,11 @@
 
   &_size {
     &_default {
-      @include m.text(f.size(34px));
+      @include m.text(f.size(18px), $lh: f.lh(22px));
+    }
+
+    &_medium {
+      @include m.text(f.size(24px), $lh: f.lh(28px));
     }
   }
 }

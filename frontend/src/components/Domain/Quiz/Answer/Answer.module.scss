@@ -1,0 +1,6 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.answer {
+  @include m.flex(nowrap column, $gap: 12px);
+}

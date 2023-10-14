@@ -13,13 +13,7 @@ export type PagginateProps = ReactPaginateProps & {
   forcePage: number
 }
 
-const Pagginate: React.FC<PagginateProps> = ({
-  className,
-  onChange,
-  pageCount,
-  forcePage,
-  ...rest
-}): JSX.Element => {
+const Pagginate: React.FC<PagginateProps> = ({ className, onChange, pageCount, forcePage, ...rest }): JSX.Element => {
   const handlerZero = useCallback(() => null, [])
   const handlerPageChange = useCallback<ReactPaginatePropsRequired['onPageChange']>(
     ({ selected }) => onChange(selected + 1),

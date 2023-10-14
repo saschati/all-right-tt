@@ -13,10 +13,7 @@ class CookiesStorage implements Storage {
       name,
       _value,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      Object.assign(
-        { httpOnly: false, sameSite: COOKIES_SAME_SITE.LAX },
-        options,
-      ) as ClientCookies.CookieAttributes,
+      Object.assign({ httpOnly: false, sameSite: COOKIES_SAME_SITE.LAX }, options) as ClientCookies.CookieAttributes,
     )
   }
 

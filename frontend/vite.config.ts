@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import svgr from 'vite-plugin-svgr'
 import path from 'path'
 
 const showHostConfig = {
@@ -10,7 +11,7 @@ const showHostConfig = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [svgr(), react()],
   server: {
     watch: {
       usePolling: true,
@@ -38,6 +39,7 @@ export default defineConfig({
       '@/Domain': path.resolve('src', 'components', 'Domain'),
       '@/UI': path.resolve('src', 'components', 'UI'),
       '@/Common': path.resolve('src', 'components', 'Common'),
+      '@/assets': path.resolve('src', 'assets'),
       '@': path.resolve('src'),
     },
   },

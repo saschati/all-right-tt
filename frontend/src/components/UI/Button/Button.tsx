@@ -4,7 +4,7 @@ import styles from './Button.module.scss'
 
 const cx = classNames.bind(styles)
 
-type ButtonColor = 'black' | 'white' | 'transparent'
+type ButtonColor = 'black' | 'white' | 'transparent' | 'physalis-gradient'
 
 type ButtonType =
   | {
@@ -24,7 +24,7 @@ export type ButtonProps = Omit<JSX.IntrinsicElements['button'], 'onClick' | 'typ
 
 const Button: React.FC<ButtonProps> = ({
   text,
-  color = 'black',
+  color = 'physalis-gradient',
   onClick,
   type = 'button',
   ...rest

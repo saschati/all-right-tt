@@ -6,6 +6,9 @@
 $_colors: (
   white: #fff,
   black: #000,
+  gray-0: #f7f6f7,
+  gray-4: #6d5c70,
+  gray-5: #423245,
 );
 
 /**
@@ -32,15 +35,10 @@ $baseSize: 16px;
 $_sizes: (
   // Logo & Title
   (
-      name: logo,
-      size: 1.625rem,
-      base: 26px,
+      name: title,
+      size: 1.5rem,
+      base: 24px,
     ),
-  (
-    name: title,
-    size: 2.125rem,
-    base: 34px,
-  ),
   // Body Text & Paragraph
   (
       name: large,
@@ -91,8 +89,8 @@ $lineHeight: 24px;
 // ============= FONTS =============
 $_fonts: (
   base: (
-    'Inconsolata',
-    monospace,
+    'Inter',
+    sans-serif,
   ),
   // ....,,,,,,,,
 );

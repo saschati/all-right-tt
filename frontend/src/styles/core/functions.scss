@@ -10,11 +10,7 @@
   }
 
   @if $default {
-    @return if(
-      (str.index(h.to-string($default), '--') == 0),
-      var($var, var($default)),
-      var($var, $default)
-    );
+    @return if((str.index(h.to-string($default), '--') == 0), var($var, var($default)), var($var, $default));
   }
 
   @return var($var);

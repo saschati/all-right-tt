@@ -13,21 +13,17 @@ Yup.addMethod(Yup.mixed, 'file', function (errorMessage = 'Is not file.') {
   })
 })
 
-Yup.addMethod(
-  Yup.mixed,
-  'fileExt',
-  function (extension: string, errorMessage = 'Unsupported Format.') {
-    const exts = extension.split(',').map((ext) => mime.getType(ext))
+Yup.addMethod(Yup.mixed, 'fileExt', function (extension: string, errorMessage = 'Unsupported Format.') {
+  const exts = extension.split(',').map((ext) => mime.getType(ext))
 
-    return this.test('fileExt', errorMessage as string, (value) => {
-      if (!value) {
-        return true
-      }
+  return this.test('fileExt', errorMessage as string, (value) => {
+    if (!value) {
+      return true
+    }
 
-      return exts.includes((value as File).type)
-    })
-  },
-)
+    return exts.includes((value as File).type)
+  })
+})
 
 Yup.addMethod(Yup.mixed, 'fileSize', function (size: number, errorMessage = 'File too large.') {
   return this.test('fileSize', errorMessage as string, (value) => {

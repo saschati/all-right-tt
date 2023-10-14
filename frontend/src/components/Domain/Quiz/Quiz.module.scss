@@ -1,0 +1,8 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.quiz {
+  &__content {
+    margin-top: 32px;
+  }
+}

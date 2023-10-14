@@ -17,13 +17,7 @@ const useHoverIntent = <T extends HTMLElement = HTMLElement>(
       return
     }
 
-    const hoverIntent = new HoverIntent(
-      ref.current,
-      onEnterAction,
-      onLeaveAction,
-      interval,
-      sensitivity,
-    )
+    const hoverIntent = new HoverIntent(ref.current, onEnterAction, onLeaveAction, interval, sensitivity)
 
     return () => {
       hoverIntent.destroy()

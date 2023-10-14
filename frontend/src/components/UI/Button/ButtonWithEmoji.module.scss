@@ -1,0 +1,13 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.buttonWithEmoji {
+  @include m.flex($ai: center);
+
+  height: 80px;
+  padding: 24px;
+  gap: 16px;
+
+  border-radius: 8px;
+  background: f.color(gray-0);
+}

@@ -15,31 +15,26 @@
   // Setting component section
   --_btn-bg-color: #{f.color(black)};
   --_btn-color: #{f.color(white)};
-  --_btn-padding: 9px 21px 17px 20px;
-  --_btn-height: 47px;
-  --_btn-anim-speed: 0.3s;
-  --_btn-size: #{f.size(regular)};
-  --_btn-lh: #{f.lh(29px)};
+  --_btn-padding: 15px 20px 14px 20px;
+  --_btn-height: 48px;
+  --_btn-anim-speed: 250ms;
+  --_btn-size: #{f.size(16px)};
+  --_btn-lh: #{f.lh(19.36px)};
   --_btn-ta: center;
   --_btn-w: 600;
   --_btn-ws: nowrap;
   --_btn-ls: 0.1em;
   --_btn-bs: 1px;
 
-  background-color: f.v(_btn-bg-color);
+  background: f.v(_btn-bg-color);
   color: f.v(_btn-color);
 
   width: 100%;
   height: f.v(_btn-height);
   padding: f.v(_btn-padding);
+  border-radius: 5px;
 
-  @include m.text(
-    f.v(_btn-size),
-    $lh: f.v(_btn-lh),
-    $ta: f.v(_btn-ta),
-    $w: f.v(_btn-w),
-    $ls: f.v(_btn-ls)
-  );
+  @include m.text(f.v(_btn-size), $lh: f.v(_btn-lh), $ta: f.v(_btn-ta), $w: f.v(_btn-w), $ls: f.v(_btn-ls));
   @include m.font(base);
 
   white-space: f.v(_btn-ws);
@@ -50,7 +45,7 @@
   // ACTION
   &:hover {
     color: f.v(_btn-bg-color);
-    background-color: transparent;
+    background: transparent;
     box-shadow: 0 0 0 f.v(_btn-bs) f.v(_btn-bg-color);
   }
 
@@ -64,6 +59,16 @@
       }
 
       @include btn-color($name, $name, $text);
+    }
+
+    // Custom
+    &_physalis-gradient {
+      --_btn-bg-color: linear-gradient(156deg, #fe9a3e 9.79%, #ea7101 90.85%);
+
+      &:hover {
+        color: #fe9a3e;
+        box-shadow: 0 0 0 f.v(_btn-bs) #fe9a3e;
+      }
     }
   }
 }
