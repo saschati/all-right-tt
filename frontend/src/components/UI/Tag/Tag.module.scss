@@ -1,0 +1,20 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.tag {
+  @include m.flex($gap: 12px, $ai: center);
+
+  width: max-content;
+  height: 56px;
+  padding-right: 16px;
+
+  border-radius: 28px;
+  border: 1px solid f.color(gray-1);
+  background: f.color(gray-0);
+
+  &__icon {
+    @include m.square(56px, 20);
+
+    object-fit: contain;
+  }
+}

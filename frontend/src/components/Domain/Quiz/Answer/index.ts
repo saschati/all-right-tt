@@ -1,1 +1,1 @@
-export { default, type AnswerProps } from './Answer'
+export { default, type AnswerProps, type AnswerItem } from './Answer'

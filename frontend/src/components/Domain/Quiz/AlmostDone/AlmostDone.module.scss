@@ -1,0 +1,19 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.almostDone {
+  @include m.flex(nowrap column, $ai: center, $gap: 24px);
+
+  padding: 32px;
+
+  border-radius: 16px;
+  background: f.color(gray-0);
+
+  &__preview {
+    @include m.square(200px);
+  }
+
+  &__desc {
+    color: f.color(gray-4);
+  }
+}

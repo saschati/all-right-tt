@@ -71,4 +71,14 @@
       }
     }
   }
+
+  &:disabled {
+    background: #{f.color(gray-2)};
+    cursor: not-allowed;
+
+    &:hover {
+      color: f.color(white);
+      box-shadow: 0 0 0 f.v(_btn-bs) f.color(gray-2);
+    }
+  }
 }
