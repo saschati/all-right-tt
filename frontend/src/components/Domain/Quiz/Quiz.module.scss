@@ -2,7 +2,5 @@
 @use '@/styles/core/mixin' as m;
 
 .quiz {
-  &__content {
-    margin-top: 32px;
-  }
+  @include m.flex(column nowrap, $gap: 32px);
 }

@@ -4,10 +4,12 @@ import Tag from '@/UI/Tag'
 import React from 'react'
 import minecraft from '@/assets/img/icons/interest/minecraft.png'
 import { QuizWithTags } from '@/Domain/Quiz'
+import ProgressBar from '@/UI/ProgressBar/ProgressBar'
 
 const HomeController: React.FC = (): JSX.Element => {
   return (
     <div>
+      <ProgressBar curr={2} total={20} />
       <QuizWithAnswer
         question={{
           title: 'How fast do you want to progress?',
@@ -79,6 +81,12 @@ const HomeController: React.FC = (): JSX.Element => {
             name: 'Painting',
           },
         ]}
+        button={{
+          text: 'Continue',
+          onClick: () => {
+            console.log('Continue')
+          },
+        }}
       />
     </div>
   )

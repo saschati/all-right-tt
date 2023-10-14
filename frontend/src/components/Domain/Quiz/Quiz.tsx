@@ -14,7 +14,7 @@ const Quiz: React.FC<QuizProps> = ({ className, children, question }): JSX.Eleme
   return (
     <div className={cx('quiz', className)}>
       <Question title={question.title} description={question.description} />
-      <div className={cx('quiz__content', className)}>{children}</div>
+      {children}
     </div>
   )
 }

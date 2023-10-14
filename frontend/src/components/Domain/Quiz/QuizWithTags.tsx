@@ -1,13 +1,18 @@
 import React from 'react'
 import Quiz, { type QuizProps } from './Quiz'
 import TagList, { type TagListProps } from './TagList'
+import Button, { ButtonProps } from '@/UI/Button'
 
-export type QuizWithTagsProps = Omit<QuizProps, 'className'> & Omit<TagListProps, 'className'>
+export type QuizWithTagsProps = Omit<QuizProps, 'className'> &
+  Omit<TagListProps, 'className'> & {
+    button: ButtonProps
+  }
 
-const QuizWithAnswer: React.FC<QuizWithTagsProps> = ({ question, tags }): JSX.Element => {
+const QuizWithAnswer: React.FC<QuizWithTagsProps> = ({ question, tags, button }): JSX.Element => {
   return (
     <Quiz question={question}>
       <TagList tags={tags} />
+      <Button {...button} />
     </Quiz>
   )
 }
