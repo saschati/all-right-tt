@@ -1,0 +1,42 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.textSwapper {
+  --_textSwapper-height: 88px;
+
+  position: relative;
+  overflow: hidden;
+
+  height: f.v(_textSwapper-height);
+  padding-top: calc(f.v(_textSwapper-height) / 2 - 7px);
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+
+    @include m.box(100%, 40px);
+  }
+
+  &::before {
+    top: 0;
+    z-index: 1;
+
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &::after {
+    bottom: 0;
+
+    transform: rotate(180deg);
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &__stages {
+    @include m.flex(column nowrap, $ai: flex-start, $gap: 12px);
+
+    transition: all 0.5s;
+  }
+}

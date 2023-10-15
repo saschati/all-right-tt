@@ -6,10 +6,21 @@ import minecraft from '@/assets/img/icons/interest/minecraft.png'
 import { QuizWithTags } from '@/Domain/Quiz'
 import ProgressBar from '@/UI/ProgressBar/ProgressBar'
 import CircleProgressBar from '@/UI/ProgressBar/CircleProgressBar'
+import TextSwapper from '@/Domain/Quiz/TextSwapper'
 
 const HomeController: React.FC = (): JSX.Element => {
   return (
     <div>
+      <TextSwapper
+        currIndex={0}
+        items={[
+          "Analysis of the child's interests",
+          'Evaluation of interesting topics',
+          'Personalization of the program',
+          'Teacher selection',
+          'Planning the class schedule',
+        ]}
+      />
       <CircleProgressBar percentage={30} />
       <ProgressBar curr={2} total={20} />
       <QuizWithAnswer
