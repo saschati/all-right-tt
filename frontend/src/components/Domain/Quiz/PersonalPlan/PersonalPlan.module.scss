@@ -2,9 +2,13 @@
 @use '@/styles/core/mixin' as m;
 
 .personalPlan {
-  @include m.flex(nowrap column, $gap: 16px);
+  @include m.flex(nowrap column, $gap: 24px);
 
-  &__desc {
-    color: f.color(gray-4);
+  &__progress {
+    @include m.flex($gap: 24px);
+  }
+
+  &__trustpilot {
+    margin-top: 8px;
   }
 }

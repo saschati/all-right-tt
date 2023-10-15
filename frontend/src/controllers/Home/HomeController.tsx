@@ -10,10 +10,57 @@ import CircleProgressBar from '@/UI/ProgressBar/CircleProgressBar'
 import TextSwapper from '@/Domain/Quiz/TextSwapper'
 import Comment from '@/Common/Comment'
 import { TrustpilotComments } from '@/Domain/Trustpilot'
+import PersonalPlan from '@/Domain/Quiz/PersonalPlan'
 
 const HomeController: React.FC = (): JSX.Element => {
   return (
     <div>
+      <PersonalPlan
+        title="We are preparing a personal plan for you"
+        progressStages={[
+          "Analysis of the child's interests",
+          'Evaluation of interesting topics',
+          'Personalization of the program',
+          'Teacher selection',
+          'Planning the class schedule',
+        ]}
+        currProgression={4}
+        trustpilot={{
+          title: 'Parents rate AllRight “Excellent” on Trustpilot',
+          comments: [
+            {
+              id: 1,
+              title: 'The child really likes it!',
+              comment:
+                'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
+              user: {
+                avatar,
+                name: 'Raluca and Sara',
+              },
+            },
+            {
+              id: 2,
+              title: 'The child really likes it!',
+              comment:
+                'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
+              user: {
+                avatar,
+                name: 'Raluca and Sara',
+              },
+            },
+            {
+              id: 3,
+              title: 'The child really likes it!',
+              comment:
+                'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
+              user: {
+                avatar,
+                name: 'Raluca and Sara',
+              },
+            },
+          ],
+        }}
+      />
       <TrustpilotComments
         title="Parents rate AllRight “Excellent” on Trustpilot"
         comments={[
