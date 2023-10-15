@@ -3042,6 +3042,11 @@ react-paginate@^8.1.4:
   dependencies:
     prop-types "^15"
 
+react-percentage-bar@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-percentage-bar/-/react-percentage-bar-1.1.1.tgz#e2878086899760656e71242bf22d2871e8e3603c"
+  integrity sha512-JWU1naIuzuxkmo/GIIUnA6gMxsRP1OWVMhePcZ2XJYaBbDyI4coZ9ZMxVSKJbvIs4c+imtNrcrjm/9U8zjeg0Q==
+
 react-redux@^8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-8.1.1.tgz#8e740f3fd864a4cd0de5ba9cdc8ad39cc9e7c81a"

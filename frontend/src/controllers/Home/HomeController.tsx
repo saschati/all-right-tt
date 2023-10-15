@@ -5,10 +5,12 @@ import React from 'react'
 import minecraft from '@/assets/img/icons/interest/minecraft.png'
 import { QuizWithTags } from '@/Domain/Quiz'
 import ProgressBar from '@/UI/ProgressBar/ProgressBar'
+import CircleProgressBar from '@/UI/ProgressBar/CircleProgressBar'
 
 const HomeController: React.FC = (): JSX.Element => {
   return (
     <div>
+      <CircleProgressBar percentage={30} />
       <ProgressBar curr={2} total={20} />
       <QuizWithAnswer
         question={{

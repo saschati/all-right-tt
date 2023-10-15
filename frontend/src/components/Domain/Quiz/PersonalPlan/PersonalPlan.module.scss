@@ -1,0 +1,10 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.personalPlan {
+  @include m.flex(nowrap column, $gap: 16px);
+
+  &__desc {
+    color: f.color(gray-4);
+  }
+}
