@@ -1,0 +1,33 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.day {
+  @include m.flex(column nowrap, $ai: center);
+  @include m.box(50px, 53px);
+
+  padding-block: 8px;
+
+  border-radius: 8px;
+  background: f.color(gray-0);
+
+  &__number {
+    color: f.color(gray-4);
+    font-weight: 600;
+  }
+
+  &__weekday {
+    color: f.color(gray-3);
+  }
+
+  &--active {
+    background: f.color(fuchsia);
+  }
+
+  &--active &__number {
+    color: f.color(fuchsia-10);
+  }
+
+  &--active &__weekday {
+    color: f.color(fuchsia-20);
+  }
+}

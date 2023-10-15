@@ -26,5 +26,9 @@
     &_small {
       @include m.text(f.size(14px), $lh: f.lh(17px));
     }
+
+    &_very-small {
+      @include m.text(f.size(12px), $lh: f.lh(15px));
+    }
   }
 }

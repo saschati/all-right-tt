@@ -11,10 +11,17 @@ import TextSwapper from '@/Domain/Quiz/TextSwapper'
 import Comment from '@/Common/Comment'
 import { TrustpilotComments } from '@/Domain/Trustpilot'
 import PersonalPlan from '@/Domain/Quiz/PersonalPlan'
+import Day, { DayOfWeekList } from '@/Common/Day'
 
 const HomeController: React.FC = (): JSX.Element => {
+  const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+
+  console.log(dateTo)
+
   return (
     <div>
+      <DayOfWeekList dateFrom={new Date()} dateTo={dateTo} />
+      <Day number={11} weekday="su" />
       <PersonalPlan
         title="We are preparing a personal plan for you"
         progressStages={[
@@ -172,17 +179,17 @@ const HomeController: React.FC = (): JSX.Element => {
             name: 'Traveling',
           },
           {
-            id: 4,
+            id: 5,
             icon: minecraft,
             name: 'Disney princesses',
           },
           {
-            id: 4,
+            id: 6,
             icon: minecraft,
             name: 'Lego',
           },
           {
-            id: 4,
+            id: 7,
             icon: minecraft,
             name: 'Painting',
           },

@@ -1,0 +1,6 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.dayOfWeeks {
+  @include m.flex(row wrap, $gap: 8px);
+}

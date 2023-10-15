@@ -4,7 +4,7 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-type TextSize = 'default' | 'medium' | 'small'
+type TextSize = 'default' | 'medium' | 'small' | 'very-small'
 type TextPosition = 'start' | 'center'
 
 export type TextProps = React.PropsWithChildren & {
