@@ -1,0 +1,10 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.hr {
+  --_hr-clr: #{f.color(gray-1)};
+
+  @include m.box(100%, 1px);
+
+  background: f.v(_hr-clr);
+}

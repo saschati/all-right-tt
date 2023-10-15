@@ -3,14 +3,24 @@ import QuizWithAnswer from '@/Domain/Quiz/QuizWithAnswer'
 import Tag from '@/UI/Tag'
 import React from 'react'
 import minecraft from '@/assets/img/icons/interest/minecraft.png'
+import avatar from '@/assets/img/comment/avatar.png'
 import { QuizWithTags } from '@/Domain/Quiz'
 import ProgressBar from '@/UI/ProgressBar/ProgressBar'
 import CircleProgressBar from '@/UI/ProgressBar/CircleProgressBar'
 import TextSwapper from '@/Domain/Quiz/TextSwapper'
+import Comment from '@/Common/Comment'
 
 const HomeController: React.FC = (): JSX.Element => {
   return (
     <div>
+      <Comment
+        title="The child really likes it!"
+        comment="We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend."
+        user={{
+          avatar,
+          name: 'Raluca and Sara',
+        }}
+      />
       <TextSwapper
         currIndex={0}
         items={[

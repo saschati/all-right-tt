@@ -1,0 +1,42 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.comment {
+  @include m.flex(column nowrap, $ai: flex-start, $gap: 12px);
+
+  padding: 16px;
+
+  background: f.color(white);
+  border-radius: 8px;
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__desc {
+    flex: 1 0 0;
+    align-self: stretch;
+
+    color: f.color(gray-4);
+  }
+
+  &__footer {
+    @include m.flex($gap: 12px);
+
+    height: 40px;
+  }
+
+  &__avatar {
+    @include m.square(40px, 50%);
+
+    object-fit: contain;
+  }
+
+  &__name_with_rate {
+    @include m.flex(column nowrap, $gap: 4px);
+  }
+
+  &__rate {
+    margin-left: -1px;
+  }
+}

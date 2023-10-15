@@ -2,7 +2,7 @@
 @use '@/styles/core/mixin' as m;
 
 .progressBar {
-  @include m.flex();
+  @include m.flex;
 
   height: 8px;
 
