@@ -9,10 +9,46 @@ import ProgressBar from '@/UI/ProgressBar/ProgressBar'
 import CircleProgressBar from '@/UI/ProgressBar/CircleProgressBar'
 import TextSwapper from '@/Domain/Quiz/TextSwapper'
 import Comment from '@/Common/Comment'
+import { TrustpilotComments } from '@/Domain/Trustpilot'
 
 const HomeController: React.FC = (): JSX.Element => {
   return (
     <div>
+      <TrustpilotComments
+        title="Parents rate AllRight “Excellent” on Trustpilot"
+        comments={[
+          {
+            id: 1,
+            title: 'The child really likes it!',
+            comment:
+              'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
+            user: {
+              avatar,
+              name: 'Raluca and Sara',
+            },
+          },
+          {
+            id: 2,
+            title: 'The child really likes it!',
+            comment:
+              'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
+            user: {
+              avatar,
+              name: 'Raluca and Sara',
+            },
+          },
+          {
+            id: 3,
+            title: 'The child really likes it!',
+            comment:
+              'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
+            user: {
+              avatar,
+              name: 'Raluca and Sara',
+            },
+          },
+        ]}
+      />
       <Comment
         title="The child really likes it!"
         comment="We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend."

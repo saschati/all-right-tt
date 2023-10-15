@@ -1,0 +1,25 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.trustpilotComments {
+  @include m.flex(column nowrap, $ai: center, $gap: 16px);
+
+  padding: 24px;
+
+  overflow: hidden;
+  background: f.color(aquaGreen);
+  border-radius: 16px;
+
+  &__title {
+    color: f.color(gray-0);
+  }
+
+  &__comments {
+    @include m.flex($jc: center, $ai: flex-start, $gap: 12px);
+  }
+
+  &__comment {
+    min-height: 274px;
+    max-width: 352px;
+  }
+}
