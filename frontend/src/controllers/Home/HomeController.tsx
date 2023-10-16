@@ -14,6 +14,7 @@ import PersonalPlan from '@/Domain/Quiz/PersonalPlan'
 import Day, { DayOfWeekList } from '@/Common/Day'
 import Select from '@/UI/Form/Select'
 import TextSelect from '@/UI/Form/Select/TextSelect'
+import Privacy from '@/Common/Privacy'
 
 const HomeController: React.FC = (): JSX.Element => {
   const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
@@ -23,6 +24,7 @@ const HomeController: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      <Privacy text="We respect your privacy and are committed to protecting your personal data." />
       <QuizWithCalendar
         title="Choose the date and time of your free lesson"
         dayOfWeek={{

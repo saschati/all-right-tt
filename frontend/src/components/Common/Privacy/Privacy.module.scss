@@ -1,0 +1,22 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.privacy {
+  position: relative;
+
+  min-height: 24px;
+  padding: 2px 0px 0px 32px;
+
+  &__icon {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    @include m.square(24px);
+  }
+
+  &__text {
+    color: f.color(gray-4);
+  }
+}
