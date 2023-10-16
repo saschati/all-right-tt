@@ -15,39 +15,59 @@ export type DayOfWeekListProps = {
   dateFrom: dayjs.ConfigType
   dateTo: dayjs.ConfigType
   dayOfWeeks?: DayOfWeek[]
+  activeDayId?: DayOfWeek['id']
+  onDayClick: (value: DayOfWeek['id'], day: DayOfWeek) => void
 }
 
-const DayOfWeekList = memo<DayOfWeekListProps>(({ className, dateFrom, dateTo, ...rest }): JSX.Element => {
-  const dayOfWeeks = useMemo<DayOfWeek[]>(() => {
-    if (Array.isArray(rest.dayOfWeeks)) {
-      return rest.dayOfWeeks
-    }
+const DayOfWeekList = memo<DayOfWeekListProps>(
+  ({ className, dateFrom, dateTo, activeDayId, onDayClick, ...rest }): JSX.Element => {
+    const dayOfWeeks = useMemo<DayOfWeek[]>(() => {
+      if (Array.isArray(rest.dayOfWeeks)) {
+        return rest.dayOfWeeks
+      }
 
-    const currDate = dayjs().format('DD.MM.YYYY')
-    const startDate = dayjs(dateFrom)
-    const days = dayjs(dateTo).diff(startDate, 'days')
+      const currDate = dayjs().format('DD.MM.YYYY')
+      const startDate = dayjs(dateFrom)
+      const days = dayjs(dateTo).diff(startDate, 'days')
 
-    const dayOfWeeks = []
-    for (let i = 0; i < days; i++) {
-      const iDay = startDate.add(i, 'day')
+      const getId = (iDay: dayjs.Dayjs) => {
+        return iDay.format('DD.MM.YYYY')
+      }
 
-      dayOfWeeks.push({
-        id: iDay.format('DD.MM.YYYY'),
-        number: Number(iDay.format('D')),
-        weekday: iDay.format('dd').toLocaleLowerCase(),
-        isActive: iDay.format('DD.MM.YYYY') === currDate,
-      })
-    }
+      const isActive = (iDay: dayjs.Dayjs) => {
+        if (activeDayId) {
+          return activeDayId === getId(iDay)
+        }
 
-    return dayOfWeeks
-  }, [dateFrom, dateTo, rest.dayOfWeeks])
+        return iDay.format('DD.MM.YYYY') === currDate
+      }
 
-  const dayOfWeeksComp = useMemo(() => {
-    return dayOfWeeks.map(({ id, ...dayOfWeek }) => <Day key={id} {...dayOfWeek} />)
-  }, [dayOfWeeks])
+      const dayOfWeeks = []
+      for (let i = 0; i < days; i++) {
+        const iDay = startDate.add(i, 'day')
 
-  return <div className={cx('dayOfWeeks', className)}>{dayOfWeeksComp}</div>
-})
+        dayOfWeeks.push({
+          id: getId(iDay),
+          number: Number(iDay.format('D')),
+          weekday: iDay.format('dd').toLocaleLowerCase(),
+          isActive: isActive(iDay) === true,
+        })
+      }
+
+      return dayOfWeeks
+    }, [dateFrom, dateTo, activeDayId, rest.dayOfWeeks])
+
+    const dayOfWeeksComp = useMemo(() => {
+      return dayOfWeeks.map(({ id, ...dayOfWeek }) => (
+        <div key={id} className="cursor-pointer" onClick={() => onDayClick(id, { id, ...dayOfWeek })}>
+          <Day {...dayOfWeek} />
+        </div>
+      ))
+    }, [dayOfWeeks, onDayClick])
+
+    return <div className={cx('dayOfWeeks', className)}>{dayOfWeeksComp}</div>
+  },
+)
 
 DayOfWeekList.displayName = 'DayOfWeekList'
 

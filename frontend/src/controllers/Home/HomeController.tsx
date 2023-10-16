@@ -19,6 +19,7 @@ const HomeController: React.FC = (): JSX.Element => {
   const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
   const [selectValue, setValue] = useState<number>()
+  const [selectDay, setSelectDay] = useState<string | number>()
 
   return (
     <div>
@@ -27,6 +28,10 @@ const HomeController: React.FC = (): JSX.Element => {
         dayOfWeek={{
           dateFrom: new Date(),
           dateTo: dateTo,
+          activeDayId: selectDay,
+          onDayClick: (id) => {
+            setSelectDay(id)
+          },
         }}
         slot={{
           onChange: (value) => {
@@ -131,7 +136,14 @@ const HomeController: React.FC = (): JSX.Element => {
           },
         ]}
       />
-      <DayOfWeekList dateFrom={new Date()} dateTo={dateTo} />
+      <DayOfWeekList
+        dateFrom={new Date()}
+        dateTo={dateTo}
+        activeDayId={selectDay}
+        onDayClick={(id) => {
+          setSelectDay(id)
+        }}
+      />
       <Day number={11} weekday="su" />
       <PersonalPlan
         title="We are preparing a personal plan for you"
