@@ -41,7 +41,7 @@ const TextSelect: React.FC<TextSelectProps> = ({
   placeholder,
 }): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null)
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleDropdownToggle = useCallback(() => setIsOpen((prevIsOpen) => !prevIsOpen), [])
 

@@ -1,0 +1,10 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.quizWithCalendar {
+  @include m.flex(column nowrap, $gap: 24px);
+
+  &__slots-and-tz {
+    @include m.flex(column nowrap, $gap: 19.5px);
+  }
+}

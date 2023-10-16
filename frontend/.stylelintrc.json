@@ -23,8 +23,11 @@
       },
       "utilitySelectors": "^\\.util-[az]+$"
     },
-    "selector-pseudo-class-no-unknown": [true, {
-      "ignorePseudoClasses": ["/global/", "/local/"]
-    }]
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["/global/", "/local/"]
+      }
+    ]
   }
 }

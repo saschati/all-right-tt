@@ -4,7 +4,7 @@ import Tag from '@/UI/Tag'
 import React, { useState } from 'react'
 import minecraft from '@/assets/img/icons/interest/minecraft.png'
 import avatar from '@/assets/img/comment/avatar.png'
-import { QuizWithTags } from '@/Domain/Quiz'
+import { QuizWithCalendar, QuizWithTags } from '@/Domain/Quiz'
 import ProgressBar from '@/UI/ProgressBar/ProgressBar'
 import CircleProgressBar from '@/UI/ProgressBar/CircleProgressBar'
 import TextSwapper from '@/Domain/Quiz/TextSwapper'
@@ -22,6 +22,66 @@ const HomeController: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      <QuizWithCalendar
+        title="Choose the date and time of your free lesson"
+        dayOfWeek={{
+          dateFrom: new Date(),
+          dateTo: dateTo,
+        }}
+        slot={{
+          onChange: (value) => {
+            console.log(value)
+          },
+          placeholder: 'Select slot',
+          options: [
+            {
+              label: 'Test 1',
+              value: 1,
+            },
+            {
+              label: 'Test 2',
+              value: 2,
+            },
+            {
+              label: 'Test 3',
+              value: 3,
+            },
+            {
+              label: 'Test 4',
+              value: 4,
+            },
+          ],
+        }}
+        tz={{
+          value: selectValue,
+          placeholder: 'Kyiv UTC +3',
+          onSelect: (value) => {
+            setValue(value as number)
+          },
+          options: [
+            {
+              label: 'Test 1',
+              value: 1,
+            },
+            {
+              label: 'Test 2',
+              value: 2,
+            },
+            {
+              label: 'Test 3',
+              value: 3,
+            },
+            {
+              label: 'Test 4',
+              value: 4,
+            },
+          ],
+        }}
+        button={{
+          text: 'Book a lesson',
+          onClick: () => {},
+        }}
+      />
       <TextSelect
         value={selectValue}
         placeholder="Kyiv UTC +3"
