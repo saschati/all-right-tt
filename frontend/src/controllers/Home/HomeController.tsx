@@ -15,15 +15,23 @@ import Day, { DayOfWeekList } from '@/Common/Day'
 import Select from '@/UI/Form/Select'
 import TextSelect from '@/UI/Form/Select/TextSelect'
 import Privacy from '@/Common/Privacy'
+import { PhoneInput } from '@/UI/Form/Input'
 
 const HomeController: React.FC = (): JSX.Element => {
   const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
   const [selectValue, setValue] = useState<number>()
   const [selectDay, setSelectDay] = useState<string | number>()
+  const [phone, setPhone] = useState<string>()
 
   return (
     <div>
+      <PhoneInput
+        value={phone}
+        onChange={(value) => {
+          setPhone(value)
+        }}
+      />
       <Privacy text="We respect your privacy and are committed to protecting your personal data." />
       <QuizWithCalendar
         title="Choose the date and time of your free lesson"

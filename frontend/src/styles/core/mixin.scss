@@ -137,9 +137,7 @@
   @if $flow == center {
     justify-content: center;
     align-items: center;
-  }
-
-  @if $flow == wrap {
+  } @else if $flow == wrap {
     flex-wrap: wrap;
   } @else if $flow {
     flex-flow: $flow;

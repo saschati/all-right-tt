@@ -1,0 +1,88 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+.phone {
+  @include m.flex($ai: center);
+
+  position: relative;
+
+  padding: 11px 16px 11px 12px;
+  height: 48px;
+
+  background: f.color(white);
+  border: 1px solid f.color(gray-2);
+  border-radius: 8px;
+
+  &__country-button {
+    @include m.flex(center);
+
+    position: absolute;
+
+    height: 46px;
+    width: 56px;
+    margin-left: -12px;
+
+    border-radius: 8px;
+
+    &:hover {
+      background: f.color(gray-1);
+    }
+  }
+
+  &__icon {
+    @include m.flex($ai: center, $gap: 4px);
+  }
+
+  &__flag {
+    width: 22px;
+  }
+
+  &:hover,
+  &--active {
+    border-color: f.color(fuchsia);
+  }
+
+  &__handler {
+    width: 100%;
+
+    margin-left: 48px;
+
+    color: f.color(dark);
+  }
+
+  &__dropdown {
+    z-index: 1;
+    position: absolute;
+    top: 56px;
+    left: 0;
+
+    max-height: 400px;
+    overflow-y: scroll;
+
+    background: f.color(white);
+    box-shadow: 0 0 0 1px f.color(gray-2);
+    border-radius: 8px;
+  }
+
+  &__dropdown-item {
+    @include m.flex($ai: center, $gap: 8px);
+
+    padding: 4px 12px;
+
+    &--active {
+      background: f.color(gray-2);
+    }
+  }
+
+  &__dropdown:hover &__option--active {
+    background: f.color(white);
+  }
+
+  &__dropdown-item:hover {
+    background: f.color(gray-2);
+  }
+
+  &__dropdown-code {
+    color: f.color(gray-3);
+  }
+}
