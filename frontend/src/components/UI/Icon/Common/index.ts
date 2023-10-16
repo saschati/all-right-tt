@@ -1,1 +1,2 @@
 export { default as Rate } from './Rate'
+export { default as ArrowDown } from './ArrowDown'

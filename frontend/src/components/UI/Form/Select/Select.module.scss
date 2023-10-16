@@ -1,0 +1,396 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+$rc: '.rc-select';
+
+:global {
+  :local(.select) {
+    & {
+      display: inline-block;
+      position: relative;
+
+      width: 100%;
+
+      color: f.color(dark);
+    }
+
+    #{$rc}-disabled,
+    #{$rc}-disabled input {
+      cursor: not-allowed;
+    }
+
+    #{$rc}-disabled #{$rc}-selector {
+      opacity: 0.3;
+    }
+
+    &#{$rc}-show-arrow#{$rc}-loading #{$rc}-arrow-icon::after {
+      box-sizing: border-box;
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      border: 2px solid #999;
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+      transform: none;
+      margin-top: 4px;
+      animation: rcSelectLoadingIcon 0.5s infinite;
+    }
+
+    & #{$rc}-selection-placeholder {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    & #{$rc}-selection-search-input {
+      appearance: none;
+    }
+
+    & #{$rc}-selection-search-input::-webkit-search-cancel-button {
+      display: none;
+      appearance: none;
+    }
+
+    &#{$rc}-single {
+      #{$rc}-selector {
+        display: flex;
+        position: relative;
+
+        cursor: pointer;
+      }
+
+      #{$rc}-selector #{$rc}-selection-search {
+        width: 100%;
+      }
+
+      #{$rc}-selector #{$rc}-selection-search-input {
+        width: 100%;
+      }
+
+      #{$rc}-selector #{$rc}-selection-item,
+      #{$rc}-selector #{$rc}-selection-placeholder {
+        pointer-events: none;
+
+        position: absolute;
+
+        top: calc(50% - 12px);
+        left: 16px;
+      }
+
+      &:not(#{$rc}-customize-input) #{$rc}-selector {
+        padding: 11px 16px;
+        height: 48px;
+
+        border: 1px solid f.color(gray-2);
+        border-radius: 8px;
+      }
+
+      &:not(#{$rc}-customize-input) #{$rc}-selector #{$rc}-selection-search-input {
+        width: 100%;
+
+        border: none;
+        outline: none;
+        background: rgba(255, 0, 0, 0.2);
+      }
+    }
+
+    &#{$rc}-multiple {
+      #{$rc}-selector {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1px;
+        border: 1px solid #000;
+      }
+
+      #{$rc}-selector #{$rc}-selection-item {
+        flex: none;
+        background: #bbb;
+        border-radius: 4px;
+        margin-right: 2px;
+        padding: 0 8px;
+      }
+
+      #{$rc}-selector #{$rc}-selection-item-disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      #{$rc}-selector #{$rc}-selection-overflow {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      #{$rc}-selector #{$rc}-selection-overflow-item {
+        flex: none;
+        max-width: 100%;
+      }
+
+      #{$rc}-selector #{$rc}-selection-search {
+        position: relative;
+        max-width: 100%;
+      }
+
+      #{$rc}-selector #{$rc}-selection-search-input,
+      #{$rc}-selector #{$rc}-selection-search-mirror {
+        padding: 1px;
+        font-family: system-ui;
+      }
+
+      #{$rc}-selector #{$rc}-selection-search-mirror {
+        position: absolute;
+        z-index: 999;
+        white-space: nowrap;
+        position: none;
+        left: 0;
+        top: 0;
+        visibility: hidden;
+      }
+
+      #{$rc}-selector #{$rc}-selection-search-input {
+        border: none;
+        outline: none;
+        background: rgba(255, 0, 0, 0.2);
+        width: 100%;
+      }
+    }
+
+    &#{$rc}-allow-clear#{$rc}-multiple #{$rc}-selector {
+      padding-right: 20px;
+    }
+
+    &#{$rc}-allow-clear #{$rc}-clear {
+      position: absolute;
+      right: 20px;
+      top: 0;
+    }
+
+    &#{$rc}-show-arrow#{$rc}-multiple #{$rc}-selector {
+      padding-right: 20px;
+    }
+
+    &#{$rc}-show-arrow {
+      #{$rc}-arrow {
+        pointer-events: none;
+
+        position: absolute;
+        right: 16px;
+        top: calc(50% - 12px);
+
+        @include m.square(24px);
+
+        transition: transform 0.3s;
+      }
+
+      #{$rc}-arrow-icon::after {
+        content: '';
+        border: 5px solid transparent;
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-top-color: #999;
+        transform: translateY(5px);
+      }
+    }
+
+    &#{$rc}-focused #{$rc}-selector {
+      border: 1px solid f.color(fuchsia) !important;
+    }
+
+    &#{$rc}-open#{$rc}-show-arrow #{$rc}-arrow {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  :local(.select__dropdown) {
+    &#{$rc}-dropdown {
+      position: absolute;
+      overflow: hidden;
+
+      min-height: 100px;
+
+      border-radius: 8px;
+      border: 1px solid f.color(fuchsia);
+      background: f.color(white);
+      color: f.color(dark);
+    }
+
+    &#{$rc}-dropdown-hidden {
+      display: none;
+    }
+
+    #{$rc}-item {
+      padding: 12px 16px;
+
+      cursor: pointer;
+    }
+
+    #{$rc}-item-group {
+      color: #999;
+    }
+
+    #{$rc}-item-option {
+      position: relative;
+    }
+
+    #{$rc}-item-option-grouped {
+      padding-left: 24px;
+    }
+
+    #{$rc}-item-option #{$rc}-item-option-state {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      pointer-events: none;
+    }
+
+    #{$rc}-item-option-active {
+      background: f.color(gray-1);
+    }
+
+    #{$rc}-item-option-disabled {
+      color: #999;
+    }
+
+    #{$rc}-item-empty {
+      text-align: center;
+      color: #999;
+    }
+
+    #{$rc}-selection__choice-zoom {
+      transition: all 0.3s;
+    }
+
+    #{$rc}-selection__choice-zoom-appear {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    #{$rc}-selection__choice-zoom-appear#{$rc}-selection__choice-zoom-appear-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #{$rc}-selection__choice-zoom-leave {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #{$rc}-selection__choice-zoom-leave#{$rc}-selection__choice-zoom-leave-active {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    #{$rc}-dropdown-slide-up-enter,
+    #{$rc}-dropdown-slide-up-appear {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+      transform-origin: 0 0;
+      opacity: 0;
+      animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+      animation-play-state: paused;
+    }
+
+    #{$rc}-dropdown-slide-up-leave {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+      transform-origin: 0 0;
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+      animation-play-state: paused;
+    }
+
+    &#{$rc}-dropdown-slide-up-enter#{$rc}-dropdown-slide-up-enter-active#{$rc}-dropdown-placement-bottomLeft,
+    &#{$rc}-dropdown-slide-up-appear#{$rc}-dropdown-slide-up-appear-active#{$rc}-dropdown-placement-bottomLeft,
+    &#{$rc}-dropdown-slide-up-enter#{$rc}-dropdown-slide-up-enter-active#{$rc}-dropdown-placement-bottomRight,
+    &#{$rc}-dropdown-slide-up-appear#{$rc}-dropdown-slide-up-appear-active#{$rc}-dropdown-placement-bottomRight {
+      animation-name: rcSelectDropdownSlideUpIn;
+      animation-play-state: running;
+    }
+
+    &#{$rc}-dropdown-slide-up-leave#{$rc}-dropdown-slide-up-leave-active#{$rc}-dropdown-placement-bottomLeft,
+    &#{$rc}-dropdown-slide-up-leave#{$rc}-dropdown-slide-up-leave-active#{$rc}-dropdown-placement-bottomRight {
+      animation-name: rcSelectDropdownSlideUpOut;
+      animation-play-state: running;
+    }
+
+    &#{$rc}-dropdown-slide-up-enter#{$rc}-dropdown-slide-up-enter-active#{$rc}-dropdown-placement-topLeft,
+    &#{$rc}-dropdown-slide-up-appear#{$rc}-dropdown-slide-up-appear-active#{$rc}-dropdown-placement-topLeft,
+    &#{$rc}-dropdown-slide-up-enter#{$rc}-dropdown-slide-up-enter-active#{$rc}-dropdown-placement-topRight,
+    &#{$rc}-dropdown-slide-up-appear#{$rc}-dropdown-slide-up-appear-active#{$rc}-dropdown-placement-topRight {
+      animation-name: rcSelectDropdownSlideDownIn;
+      animation-play-state: running;
+    }
+
+    &#{$rc}-dropdown-slide-up-leave#{$rc}-dropdown-slide-up-leave-active#{$rc}-dropdown-placement-topLeft,
+    &#{$rc}-dropdown-slide-up-leave#{$rc}-dropdown-slide-up-leave-active#{$rc}-dropdown-placement-topRight {
+      animation-name: rcSelectDropdownSlideDownOut;
+      animation-play-state: running;
+    }
+
+    @keyframes rcSelectDropdownSlideUpIn {
+      0% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleY(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes rcSelectDropdownSlideUpOut {
+      0% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleY(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleY(0);
+      }
+    }
+
+    @keyframes rcSelectDropdownSlideDownIn {
+      0% {
+        transform: scaleY(0);
+        transform-origin: 100% 100%;
+        opacity: 0;
+      }
+
+      100% {
+        transform: scaleY(1);
+        transform-origin: 100% 100%;
+        opacity: 1;
+      }
+    }
+
+    @keyframes rcSelectDropdownSlideDownOut {
+      0% {
+        transform: scaleY(1);
+        transform-origin: 100% 100%;
+        opacity: 1;
+      }
+
+      100% {
+        transform: scaleY(0);
+        transform-origin: 100% 100%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes rcSelectLoadingIcon {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

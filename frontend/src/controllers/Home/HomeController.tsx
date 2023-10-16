@@ -12,14 +12,37 @@ import Comment from '@/Common/Comment'
 import { TrustpilotComments } from '@/Domain/Trustpilot'
 import PersonalPlan from '@/Domain/Quiz/PersonalPlan'
 import Day, { DayOfWeekList } from '@/Common/Day'
+import Select from '@/UI/Form/Select'
 
 const HomeController: React.FC = (): JSX.Element => {
   const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
-  console.log(dateTo)
-
   return (
     <div>
+      <Select
+        onChange={(value) => {
+          console.log(value)
+        }}
+        placeholder="Select options"
+        options={[
+          {
+            label: 'Test 1',
+            value: 1,
+          },
+          {
+            label: 'Test 2',
+            value: 2,
+          },
+          {
+            label: 'Test 3',
+            value: 3,
+          },
+          {
+            label: 'Test 4',
+            value: 4,
+          },
+        ]}
+      />
       <DayOfWeekList dateFrom={new Date()} dateTo={dateTo} />
       <Day number={11} weekday="su" />
       <PersonalPlan
