@@ -22,6 +22,9 @@
         "combined": "^\\.combined-{componentName}-[az ]+$"
       },
       "utilitySelectors": "^\\.util-[az]+$"
-    }
+    },
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["/global/", "/local/"]
+    }]
   }
 }

@@ -1,7 +1,7 @@
 import AlmostDone from '@/Domain/Quiz/AlmostDone/AlmostDone'
 import QuizWithAnswer from '@/Domain/Quiz/QuizWithAnswer'
 import Tag from '@/UI/Tag'
-import React from 'react'
+import React, { useState } from 'react'
 import minecraft from '@/assets/img/icons/interest/minecraft.png'
 import avatar from '@/assets/img/comment/avatar.png'
 import { QuizWithTags } from '@/Domain/Quiz'
@@ -13,12 +13,40 @@ import { TrustpilotComments } from '@/Domain/Trustpilot'
 import PersonalPlan from '@/Domain/Quiz/PersonalPlan'
 import Day, { DayOfWeekList } from '@/Common/Day'
 import Select from '@/UI/Form/Select'
+import TextSelect from '@/UI/Form/Select/TextSelect'
 
 const HomeController: React.FC = (): JSX.Element => {
   const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
+  const [selectValue, setValue] = useState<number>()
+
   return (
     <div>
+      <TextSelect
+        value={selectValue}
+        placeholder="Kyiv UTC +3"
+        onSelect={(value) => {
+          setValue(value as number)
+        }}
+        options={[
+          {
+            label: 'Test 1',
+            value: 1,
+          },
+          {
+            label: 'Test 2',
+            value: 2,
+          },
+          {
+            label: 'Test 3',
+            value: 3,
+          },
+          {
+            label: 'Test 4',
+            value: 4,
+          },
+        ]}
+      />
       <Select
         onChange={(value) => {
           console.log(value)

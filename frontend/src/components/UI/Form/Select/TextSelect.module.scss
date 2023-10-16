@@ -1,0 +1,50 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.textSelect {
+  position: relative;
+
+  width: max-content;
+
+  color: f.color(gray-4);
+
+  &__selector {
+    @include m.flex($ai: center, $gap: 8px);
+  }
+
+  &__icon {
+    @include m.square(20px);
+  }
+
+  &__dropdown {
+    z-index: 1;
+    position: absolute;
+    left: -8px;
+
+    width: 100%;
+    max-height: 600px;
+
+    border-radius: 4px;
+    background: f.color(white);
+    box-shadow: 0 0 0 2px f.color(gray-0);
+  }
+
+  &__option {
+    padding: 4px 8px;
+
+    &--active {
+      color: f.color(dark);
+      font-weight: 600;
+    }
+  }
+
+  &__dropdown:hover &__option--active {
+    color: f.color(gray-4);
+    font-weight: 500;
+  }
+
+  &__option:hover {
+    color: f.color(dark) !important;
+    font-weight: 600 !important;
+  }
+}
