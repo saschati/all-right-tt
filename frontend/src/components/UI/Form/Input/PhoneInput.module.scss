@@ -48,6 +48,10 @@
     margin-left: 48px;
 
     color: f.color(dark);
+
+    &::placeholder {
+      color: f.color(gray-3);
+    }
   }
 
   &__dropdown {

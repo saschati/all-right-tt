@@ -1,0 +1,6 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.quizWithPhone {
+  @include m.flex(column nowrap, $gap: 24px);
+}

@@ -4,7 +4,7 @@ import Tag from '@/UI/Tag'
 import React, { useState } from 'react'
 import minecraft from '@/assets/img/icons/interest/minecraft.png'
 import avatar from '@/assets/img/comment/avatar.png'
-import { QuizWithCalendar, QuizWithTags } from '@/Domain/Quiz'
+import { QuizWithCalendar, QuizWithPhone, QuizWithTags } from '@/Domain/Quiz'
 import ProgressBar from '@/UI/ProgressBar/ProgressBar'
 import CircleProgressBar from '@/UI/ProgressBar/CircleProgressBar'
 import TextSwapper from '@/Domain/Quiz/TextSwapper'
@@ -26,8 +26,31 @@ const HomeController: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      <QuizWithPhone
+        question={{
+          title: 'Enter your phone number',
+          description: 'This is necessary to receive notifications',
+        }}
+        phone={{
+          value: phone,
+          placeholder: 'Enter your phone number',
+          onChange: (value) => {
+            setPhone(value)
+          },
+        }}
+        button={{
+          text: 'Continue',
+          onClick: () => {
+            console.log('')
+          },
+        }}
+        privacy={{
+          text: 'We respect your privacy and are committed to protecting your personal data.',
+        }}
+      />
       <PhoneInput
         value={phone}
+        placeholder="test"
         onChange={(value) => {
           setPhone(value)
         }}

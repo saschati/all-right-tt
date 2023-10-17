@@ -23,6 +23,7 @@ export type PhoneInputProps = {
   className?: string
   value?: string
   defaultCountry?: RIPPhoneInputProps['defaultCountry']
+  placeholder?: string
   onChange: (
     value: string,
     data: {
@@ -33,7 +34,7 @@ export type PhoneInputProps = {
 }
 
 const PhoneInput: React.FC<PhoneInputProps> = React.forwardRef<PhoneInputHandle, PhoneInputProps>(
-  ({ className, value, onChange, defaultCountry = 'ua' }, ref): JSX.Element => {
+  ({ className, value, onChange, placeholder, defaultCountry = 'ua' }, ref): JSX.Element => {
     const containerRef = useRef<HTMLDivElement>(null)
 
     const [isFocused, setIsFocused] = useState(false)
@@ -82,7 +83,8 @@ const PhoneInput: React.FC<PhoneInputProps> = React.forwardRef<PhoneInputHandle,
           </div>
         )
       })
-    }, [setCountry, country])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [country])
 
     const classes: string[] = []
     if (isFocused) {
@@ -102,6 +104,7 @@ const PhoneInput: React.FC<PhoneInputProps> = React.forwardRef<PhoneInputHandle,
           className={cx('phone__handler')}
           value={phone}
           type="text"
+          placeholder={placeholder}
           onChange={handlePhoneValueChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
