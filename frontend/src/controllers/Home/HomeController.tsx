@@ -28,6 +28,13 @@ const HomeController: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      <Tag
+        icon={minecraft}
+        name="Minecraft"
+        onClick={() => {
+          console.log('Minecraft')
+        }}
+      />
       <ButtonWithEmoji
         emoji="test"
         text="Never taught"
@@ -317,7 +324,6 @@ const HomeController: React.FC = (): JSX.Element => {
           },
         }}
       />
-      <Tag icon={minecraft} name="Minecraft" />
       <QuizWithTags
         question={{
           title: 'What is your child interested in?',

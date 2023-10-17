@@ -21,6 +21,7 @@ const ButtonWithEmoji = memo<ButtonWithEmojiProps>(({ className, text, emoji, on
   const handleClick = () => {
     if (isActive) {
       setIsActive(false)
+      onClick(false)
     } else {
       setIsClicked(true)
     }
