@@ -26,6 +26,8 @@
   --_btn-ls: 0.1em;
   --_btn-bs: 1px;
 
+  position: relative;
+
   background: f.v(_btn-bg-color);
   color: f.v(_btn-color);
 
@@ -41,6 +43,13 @@
 
   cursor: pointer;
   transition: f.v(_btn-anim-speed);
+
+  &__glare {
+    position: absolute;
+
+    left: 3px;
+    top: 3px;
+  }
 
   // ACTION
   &:hover {

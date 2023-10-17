@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './Button.module.scss'
+import GlareSVG from '@/assets/img/button/glare.svg?react'
 
 const cx = classNames.bind(styles)
 
@@ -31,6 +32,9 @@ const Button: React.FC<ButtonProps> = ({
 }): JSX.Element => {
   return (
     <button type={type} className={cx('btn', `btn_color_${color}`)} onClick={onClick} {...rest}>
+      <div className={cx('btn__glare')}>
+        <GlareSVG />
+      </div>
       {text}
     </button>
   )
