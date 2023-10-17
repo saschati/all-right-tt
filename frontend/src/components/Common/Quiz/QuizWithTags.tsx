@@ -8,13 +8,13 @@ export type QuizWithTagsProps = Omit<QuizProps, 'className'> &
     button: ButtonProps
   }
 
-const QuizWithAnswer: React.FC<QuizWithTagsProps> = ({ question, tags, button }): JSX.Element => {
+const QuizWithTags: React.FC<QuizWithTagsProps> = ({ question, tags, button, onClick }): JSX.Element => {
   return (
     <Quiz question={question}>
-      <TagList tags={tags} />
+      <TagList tags={tags} onClick={onClick} />
       <Button {...button} />
     </Quiz>
   )
 }
 
-export default QuizWithAnswer
+export default QuizWithTags

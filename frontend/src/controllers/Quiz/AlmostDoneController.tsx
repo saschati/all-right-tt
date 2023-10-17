@@ -2,7 +2,7 @@ import Container from '@/UI/Wrapper/Container'
 import React from 'react'
 import AlmostDone from '@/Common/Quiz/AlmostDone'
 
-const HomeController: React.FC = (): JSX.Element => {
+const AlmostDoneController: React.FC = (): JSX.Element => {
   return (
     <Container>
       <AlmostDone
@@ -17,4 +17,4 @@ const HomeController: React.FC = (): JSX.Element => {
   )
 }
 
-export default HomeController
+export default AlmostDoneController
