@@ -21,7 +21,9 @@ const AlmostDone = memo<AlmostDoneProps>(({ className, title, description, butto
       <div className={cx('almostDone__preview')}>
         <img src={mascot} alt="Mascot" />
       </div>
-      <Text className={cx('almostDone__desc')}>{description}</Text>
+      <Text className={cx('almostDone__desc')} position="center">
+        {description}
+      </Text>
       <Button {...button} />
     </div>
   )

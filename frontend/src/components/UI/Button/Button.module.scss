@@ -23,7 +23,7 @@
   --_btn-ta: center;
   --_btn-w: 600;
   --_btn-ws: nowrap;
-  --_btn-ls: 0.1em;
+  --_btn-ls: unset;
   --_btn-bs: 1px;
 
   position: relative;
@@ -34,7 +34,7 @@
   width: 100%;
   height: f.v(_btn-height);
   padding: f.v(_btn-padding);
-  border-radius: 5px;
+  border-radius: 8px;
 
   @include m.text(f.v(_btn-size), $lh: f.v(_btn-lh), $ta: f.v(_btn-ta), $w: f.v(_btn-w), $ls: f.v(_btn-ls));
   @include m.font(base);

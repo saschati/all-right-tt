@@ -2,15 +2,22 @@
 
 .layout {
   --_header-height: 62px;
+  --_header-indentation: 53px;
+  --_content-padding-top: 28px;
+  --_content-padding-bottom: 48px;
+  --_content-min-height: #{calc(
+      f.v(window-height, 100vh) - f.v(_header-height) - f.v(_header-indentation) - f.v(_content-padding-top) -
+        f.v(_content-padding-bottom)
+    )};
 
   display: grid;
   grid-template:
     ' .    header               .' f.v(_header-height)
-    ' .    .                    .' 53px
-    ' .    content              .' minmax(calc(f.v(window-height, 100vh) - f.v(_header-height) - 72px), 1fr)
+    ' .    .                    .' f.v(--_header-indentation)
+    ' .    content              .' minmax(f.v(_content-min-height), 1fr)
     / auto minmax(auto, 1200px) auto;
 
-  padding-block: 28px 48px;
+  padding-block: f.v(_content-padding-top) f.v(_content-padding-bottom);
   margin: 0 auto;
 
   width: 944px;
