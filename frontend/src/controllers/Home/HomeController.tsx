@@ -17,6 +17,7 @@ import TextSelect from '@/UI/Form/Select/TextSelect'
 import Privacy from '@/Common/Privacy'
 import { PhoneInput } from '@/UI/Form/Input'
 import Fraction from '@/Common/Fraction/Fraction'
+import { ButtonWithEmoji } from '@/UI/Button'
 
 const HomeController: React.FC = (): JSX.Element => {
   const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
@@ -27,6 +28,13 @@ const HomeController: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      <ButtonWithEmoji
+        emoji="test"
+        text="Never taught"
+        onClick={() => {
+          console.log('test')
+        }}
+      />
       <Fraction divisible={19} divisor={20} />
       <QuizWithPhone
         question={{

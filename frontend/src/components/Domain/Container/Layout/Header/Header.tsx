@@ -23,9 +23,6 @@ export type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ className, onBackward, step }): JSX.Element => {
   const percent = calcPercent(step.total, step.curr) * 100
 
-  console.log(calcPercent(step.total, step.curr))
-
-  console.log(percent)
   return (
     <div className={cx('header', className)}>
       <div className={cx('header__panel', className)}>
