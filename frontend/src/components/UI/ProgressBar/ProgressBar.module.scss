@@ -9,14 +9,15 @@
   overflow: hidden;
 
   &__progress {
+    position: relative;
+
     height: 8px;
-    width: 100%;
+    width: 0;
 
     background: f.color(physalis);
     border-radius: 4px;
 
-    transform: scaleX(0);
     transform-origin: left;
-    transition: transform 500ms;
+    transition: width 500ms;
   }
 }

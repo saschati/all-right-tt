@@ -9,12 +9,12 @@ const HomeController: React.FC = (): JSX.Element => {
       {
         id: 1,
         title: 'Already started studying',
-        emoji: 'test',
+        emoji: 'smiling-face-with-heart-eyes',
       },
       {
         id: 2,
         title: 'Never studied',
-        emoji: 'test',
+        emoji: 'face-with-diagonal-mouth',
       },
     ]
   }, [])

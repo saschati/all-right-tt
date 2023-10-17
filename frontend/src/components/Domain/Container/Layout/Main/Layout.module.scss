@@ -6,11 +6,11 @@
   display: grid;
   grid-template:
     ' .    header               .' f.v(_header-height)
-    ' .    .                    .' 56px
+    ' .    .                    .' 53px
     ' .    content              .' minmax(calc(f.v(window-height, 100vh) - f.v(_header-height) - 72px), 1fr)
     / auto minmax(auto, 1200px) auto;
 
-  padding-block: 24px 48px;
+  padding-block: 28px 48px;
   margin: 0 auto;
 
   width: 944px;

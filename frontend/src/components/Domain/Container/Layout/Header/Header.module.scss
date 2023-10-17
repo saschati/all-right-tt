@@ -8,8 +8,15 @@
     @include m.flex($ai: center, $jc: space-between);
   }
 
+  &__logo {
+    margin-right: -34px;
+    margin-bottom: -3px;
+  }
+
   &__step {
-    width: 53px;
+    width: 60px;
+    margin-top: -3px;
+
     text-align: right;
   }
 }

@@ -26,10 +26,12 @@ const Header: React.FC<HeaderProps> = ({ className, onBackward, step }): JSX.Ele
   return (
     <div className={cx('header', className)}>
       <div className={cx('header__panel', className)}>
-        <div onClick={onBackward} className="cursor-pointer">
+        <div onClick={onBackward} className={cx('cursor-pointer')}>
           <ArrowBack />
         </div>
-        <img src={logo} alt="All right" />
+        <div className={cx('header__logo')}>
+          <img src={logo} alt="All right" />
+        </div>
         <Fraction className={cx('header__step')} divisible={step.curr} divisor={step.total} />
       </div>
       <ProgressBar percentage={percent} />

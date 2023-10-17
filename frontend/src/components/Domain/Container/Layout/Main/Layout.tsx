@@ -14,7 +14,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }): JSX.Element =>
           <Header
             onBackward={() => {}}
             step={{
-              curr: 10,
+              curr: 1,
               total: 20,
             }}
           />

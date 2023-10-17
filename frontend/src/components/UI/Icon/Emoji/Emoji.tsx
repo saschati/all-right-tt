@@ -1,18 +1,18 @@
 import React from 'react'
-import Default from '@/assets/img/icons/emoji/emoji-smiling-face-with-heart-eyes.svg?react'
+import emojiMap, { type EmojiName } from './emoji'
 
-export type EmojiType = string
+export type EmojiType = EmojiName
 
 export type EmojiProps = {
   type: EmojiType
+  width?: number
+  height?: number
 }
 
-const Emoji: React.FC<EmojiProps> = ({ type }): JSX.Element => {
-  if (type) {
-    // TODO: WIP
-  }
+const Emoji: React.FC<EmojiProps> = ({ type, width = 32, height = 32 }): JSX.Element => {
+  const EmojiComponent = emojiMap[type] as React.FunctionComponent<{ width: number; height: number }>
 
-  return <Default width={32} height={32} />
+  return <EmojiComponent width={width} height={height} />
 }
 
 export default Emoji
