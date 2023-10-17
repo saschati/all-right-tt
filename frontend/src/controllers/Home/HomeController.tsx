@@ -278,7 +278,7 @@ const HomeController: React.FC = (): JSX.Element => {
         ]}
       />
       <CircleProgressBar percentage={30} />
-      <ProgressBar curr={2} total={20} />
+      <ProgressBar percentage={99} />
       <QuizWithAnswer
         question={{
           title: 'How fast do you want to progress?',
