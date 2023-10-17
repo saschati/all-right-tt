@@ -24,7 +24,7 @@ const PersonalPlan: React.FC<PersonalPlanProps> = ({
   currProgression,
   trustpilot,
 }): JSX.Element => {
-  const percent = calcPercent(progressStages.length, currProgression + 1) * 100
+  const percent = Math.round(calcPercent(progressStages.length, currProgression + 1) * 100)
 
   return (
     <div className={cx('personalPlan', className)}>

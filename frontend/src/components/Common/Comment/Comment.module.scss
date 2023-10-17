@@ -33,6 +33,8 @@
   }
 
   &__name_with_rate {
+    margin-top: -2px;
+
     @include m.flex(column nowrap, $gap: 4px);
   }
 

@@ -15,6 +15,10 @@
   }
 
   &__comments {
+    width: max-content;
+
+    align-self: flex-start;
+
     @include m.flex($jc: center, $ai: flex-start, $gap: 12px);
   }
 
