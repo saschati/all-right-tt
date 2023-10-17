@@ -23,6 +23,10 @@
       @include m.text(f.size(24px), $lh: f.lh(28px));
     }
 
+    &_small-large {
+      @include m.text(f.size(16px), $lh: f.lh(17px));
+    }
+
     &_small {
       @include m.text(f.size(14px), $lh: f.lh(17px));
     }

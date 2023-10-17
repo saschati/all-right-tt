@@ -16,6 +16,7 @@ import Select from '@/UI/Form/Select'
 import TextSelect from '@/UI/Form/Select/TextSelect'
 import Privacy from '@/Common/Privacy'
 import { PhoneInput } from '@/UI/Form/Input'
+import Fraction from '@/Common/Fraction/Fraction'
 
 const HomeController: React.FC = (): JSX.Element => {
   const dateTo = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
@@ -26,6 +27,7 @@ const HomeController: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      <Fraction divisible={19} divisor={20} />
       <QuizWithPhone
         question={{
           title: 'Enter your phone number',
