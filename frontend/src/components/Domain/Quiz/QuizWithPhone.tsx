@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './QuizWithPhone.module.scss'
 import classNames from 'classnames/bind'
-import Quiz, { QuizProps } from '.'
+import Quiz, { type QuizProps } from '@/Common/Quiz'
 import { PhoneInput, PhoneInputProps } from '@/UI/Form/Input'
 import Button, { ButtonProps } from '@/UI/Button'
 import Privacy, { PrivacyProps } from '@/Common/Privacy'

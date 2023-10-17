@@ -3,7 +3,7 @@ import styles from './PersonalPlan.module.scss'
 import classNames from 'classnames/bind'
 import Text from '@/UI/Text'
 import { CircleProgressBar } from '@/UI/ProgressBar'
-import TextSwapper from '../TextSwapper'
+import TextSwapper from '@/Common/TextSwapper'
 import { TrustpilotComments, type TrustpilotCommentsProps } from '@/Domain/Trustpilot'
 import { calcPercent } from '@/helpers/math'
 

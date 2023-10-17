@@ -14,12 +14,20 @@ export interface AnswerItem {
 export type AnswerProps = {
   className?: string
   answers: AnswerItem[]
+  onClick: (answer: AnswerItem, isActive: boolean) => void
 }
 
-const Answer: React.FC<AnswerProps> = ({ className, answers }): JSX.Element => {
+const Answer: React.FC<AnswerProps> = ({ className, answers, onClick }): JSX.Element => {
   const answersComp = useMemo(() => {
-    return answers.map((answer) => <ButtonWithEmoji key={answer.id} emoji={answer.emoji} text={answer.title} />)
-  }, [answers])
+    return answers.map((answer) => (
+      <ButtonWithEmoji
+        key={answer.id}
+        emoji={answer.emoji}
+        text={answer.title}
+        onClick={(isActive) => onClick(answer, isActive)}
+      />
+    ))
+  }, [answers, onClick])
 
   return <div className={cx('answer', className)}>{answersComp}</div>
 }

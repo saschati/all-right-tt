@@ -1,6 +1,6 @@
 import React from 'react'
-import Quiz, { type QuizProps } from './Quiz'
-import TagList, { type TagListProps } from './TagList'
+import Quiz, { type QuizProps } from '@/Common/Quiz'
+import TagList, { type TagListProps } from '@/Common/Quiz/TagList'
 import Button, { ButtonProps } from '@/UI/Button'
 
 export type QuizWithTagsProps = Omit<QuizProps, 'className'> &

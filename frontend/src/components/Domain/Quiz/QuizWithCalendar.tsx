@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './QuizWithCalendar.module.scss'
 import classNames from 'classnames/bind'
-import Quiz from './Quiz'
+import Quiz from '@/Common/Quiz/Quiz'
 import { DayOfWeekList, type DayOfWeekListProps } from '@/Common/Day'
 import Select, { type SelectProps } from '@/UI/Form/Select'
 import TextSelect, { type TextSelectProps } from '@/UI/Form/Select/TextSelect'
