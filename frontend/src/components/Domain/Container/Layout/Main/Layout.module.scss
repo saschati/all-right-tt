@@ -1,18 +1,19 @@
 @use '@/styles/core/functions' as f;
 
 .layout {
-  --_header-height: 50px;
-  --_footer-height: 50px;
+  --_header-height: 62px;
 
   display: grid;
   grid-template:
     ' .    header               .' f.v(_header-height)
-    ' .    content              .' minmax(
-      calc(f.v(window-height, 100vh) - f.v(_header-height) - f.v(_footer-height)),
-      1fr
-    )
-    ' .    footer               .' f.v(_footer-height)
+    ' .    .                    .' 56px
+    ' .    content              .' minmax(calc(f.v(window-height, 100vh) - f.v(_header-height) - 72px), 1fr)
     / auto minmax(auto, 1200px) auto;
+
+  padding-block: 24px 48px;
+  margin: 0 auto;
+
+  width: 944px;
 
   &__header {
     grid-area: header;
@@ -20,9 +21,5 @@
 
   &__content {
     grid-area: content;
-  }
-
-  &__footer {
-    grid-area: footer;
   }
 }

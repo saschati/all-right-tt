@@ -1,0 +1,15 @@
+@use '@/styles/core/functions' as f;
+@use '@/styles/core/mixin' as m;
+
+.header {
+  @include m.flex(column nowrap, $gap: 16px);
+
+  &__panel {
+    @include m.flex($ai: center, $jc: space-between);
+  }
+
+  &__step {
+    width: 53px;
+    text-align: right;
+  }
+}
