@@ -1,11 +1,15 @@
 import { QuizWithCalendar } from '@/Domain/Quiz'
 import Container from '@/UI/Wrapper/Container'
 import { dayOfWeekFactory } from '@/helpers/quiz/dayOfWeek'
+import { STEPS_ORDER } from '@/helpers/quiz/step'
+import useStep from '@/hooks/domain/quiz/useStep'
 import React, { useMemo } from 'react'
 
 const WEEK_TIME = 7 * 24 * 60 * 60 * 1000
 
-const ChooseDataAndTimeLessonController: React.FC = (): JSX.Element => {
+const ChooseDateAndTimeLessonController: React.FC = (): JSX.Element => {
+  useStep(STEPS_ORDER.CHOOSE_DATE_AND_TIME_LESSON)
+
   const dayOfWeek = useMemo(() => {
     const dayOfWeeks = dayOfWeekFactory(new Date(), new Date(Date.now() + WEEK_TIME))
     const active = dayOfWeeks.find((dayOfWeek) => dayOfWeek.isActive)
@@ -60,4 +64,4 @@ const ChooseDataAndTimeLessonController: React.FC = (): JSX.Element => {
   )
 }
 
-export default ChooseDataAndTimeLessonController
+export default ChooseDateAndTimeLessonController

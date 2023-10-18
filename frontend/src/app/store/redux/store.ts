@@ -2,12 +2,14 @@ import { configureStore, ConfigureStoreOptions } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { api } from './services/api'
 import example from './slices/example/example'
+import quizStep from './slices/quiz/step'
 
 export const createStore = (options?: ConfigureStoreOptions['preloadedState'] | undefined) =>
   configureStore({
     reducer: {
       [api.reducerPath]: api.reducer,
       example,
+      quizStep,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
     ...options,

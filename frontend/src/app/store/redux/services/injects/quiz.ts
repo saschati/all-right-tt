@@ -1,46 +1,31 @@
+import { Question } from '@/types/model/quiz'
 import { api } from '../api'
+import { questions } from '@/mocks/quiz/question'
 
-export type Entity = {
-  id: string
-  name: string
+interface GetQuestionByIdResponse {
+  question: Question
+  isLast: boolean
 }
 
-interface PostExampleQuery {
-  data: Entity
+interface GetQuestionByIdQuery {
+  id: number
 }
 
-interface PostExampleResponse {
-  data: Entity
-}
-
-interface GetExampleResponse {
-  data: Entity[]
-}
-
-interface GetExampleQuery {
-  page: number
-}
-
-export const exampleApi = api.injectEndpoints({
+export const quizApi = api.injectEndpoints({
   endpoints: (build) => ({
-    exampleGetSome: build.query<GetExampleResponse, GetExampleQuery>({
-      query: ({ page = 1 }) => ({
-        url: 'example',
-        params: {
-          page,
-        },
-      }),
-      providesTags: ['Example'],
-    }),
-    examplePostSome: build.mutation<PostExampleResponse, PostExampleQuery>({
-      query: (data) => ({
-        url: 'example',
-        method: 'POST',
-        body: data,
-      }),
-      invalidatesTags: ['Example'],
+    quizGetQuestionById: build.query<GetQuestionByIdResponse, GetQuestionByIdQuery>({
+      queryFn({ id }) {
+        const question = questions.find((question) => question.id === id) || null
+
+        if (!question) {
+          return { error: { status: 404, statusText: 'Question not found!', data: 'Question not found!' } }
+        }
+
+        return { data: { question: question, isLast: question.id === 4 } }
+      },
+      providesTags: ['QuizQuestion'],
     }),
   }),
 })
 
-export const { useExampleGetSomeQuery, useExamplePostSomeMutation } = exampleApi
+export const { useQuizGetQuestionByIdQuery } = quizApi

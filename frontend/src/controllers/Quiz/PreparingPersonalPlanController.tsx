@@ -3,8 +3,15 @@ import { CommentType } from '@/Domain/Trustpilot/TrustpilotComments'
 import Container from '@/UI/Wrapper/Container'
 import React, { useEffect, useMemo, useState } from 'react'
 import avatar from '@/assets/img/comment/avatar.png'
+import useStep from '@/hooks/domain/quiz/useStep'
+import { STEPS_ORDER } from '@/helpers/quiz/step'
+import { useNavigate } from 'react-router-dom'
+import Path from '@/config/path'
 
 const PreparingPersonalPlanController: React.FC = (): JSX.Element => {
+  useStep(STEPS_ORDER.PREPARING_PERSONAL_PLAN)
+  const navigate = useNavigate()
+
   const [currProgression, setCurrProgression] = useState(0)
   const progressStages = useMemo(() => {
     return [
@@ -22,6 +29,10 @@ const PreparingPersonalPlanController: React.FC = (): JSX.Element => {
         const currProgression = prevCurrProgression + 1
         if (currProgression === progressStages.length - 1) {
           clearInterval(timer)
+
+          setTimeout(() => {
+            navigate(Path.QUIZ_ENTER_PHONE_NUMBER)
+          }, 2000)
         }
 
         return currProgression
@@ -31,7 +42,7 @@ const PreparingPersonalPlanController: React.FC = (): JSX.Element => {
     return () => {
       clearInterval(timer)
     }
-  }, [progressStages.length])
+  }, [progressStages.length, navigate])
 
   const comments: CommentType[] = useMemo(() => {
     return [

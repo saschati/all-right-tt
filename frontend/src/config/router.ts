@@ -18,4 +18,15 @@ export const route = (path: Path, Component: React.ComponentType, access: Router
   return { path, Component, access }
 }
 
+export const routeToPath = <P extends object = object>(path: Path, params: P) => {
+  const newPath = path.replace(/:(?<name>[\w]+)\/?/g, (...matches) => {
+    const group = matches[matches.length - 1] as { name: keyof P }
+    const replace = params[group.name]
+
+    return `${replace}/`
+  })
+
+  return newPath.slice(0, -1)
+}
+
 export const NoFoundComponent = NoFoundController

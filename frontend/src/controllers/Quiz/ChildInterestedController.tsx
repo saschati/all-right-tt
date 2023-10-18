@@ -3,8 +3,15 @@ import React, { useMemo } from 'react'
 import { QuizWithTags } from '@/Common/Quiz'
 import { TagItem } from '@/Common/Quiz/TagList'
 import minecraft from '@/assets/img/icons/interest/minecraft.png'
+import useStep from '@/hooks/domain/quiz/useStep'
+import { useNavigate } from 'react-router-dom'
+import Path from '@/config/path'
+import { STEPS_ORDER } from '@/helpers/quiz/step'
 
 const ChildInterestedController: React.FC = (): JSX.Element => {
+  useStep(STEPS_ORDER.CHILD_INTERESTED)
+  const navigate = useNavigate()
+
   const tags: TagItem[] = useMemo(() => {
     return [
       {
@@ -56,7 +63,7 @@ const ChildInterestedController: React.FC = (): JSX.Element => {
         onClick={() => {}}
         button={{
           text: 'Continue',
-          onClick: () => {},
+          onClick: () => navigate(Path.QUIZ_PREPARING_PERSONAL_PLAN),
         }}
       />
     </Container>
