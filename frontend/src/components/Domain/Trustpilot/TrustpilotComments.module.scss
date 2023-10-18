@@ -20,10 +20,19 @@
     align-self: flex-start;
 
     @include m.flex($jc: center, $ai: flex-start, $gap: 12px);
+
+    transition: transform 0.5s;
   }
 
   &__comment {
     min-height: 274px;
     max-width: 352px;
+
+    opacity: 0.6;
+    transition: opacity 0.5s;
+
+    &--active {
+      opacity: 1;
+    }
   }
 }
