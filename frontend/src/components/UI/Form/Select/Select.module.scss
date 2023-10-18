@@ -70,10 +70,12 @@ $rc: '.rc-select';
       #{$rc}-selector #{$rc}-selection-placeholder {
         pointer-events: none;
 
+        @include m.text(f.size(18px), f.color(dark), f.lh(22px), 500);
+
         position: absolute;
 
-        top: calc(50% - 12px);
-        left: 16px;
+        top: calc(50% - 10px);
+        left: 15px;
       }
 
       &:not(#{$rc}-customize-input) #{$rc}-selector {

@@ -2,9 +2,13 @@
 @use '@/styles/core/mixin' as m;
 
 .quizWithCalendar {
+  margin-top: -1px;
+
   @include m.flex(column nowrap, $gap: 24px);
 
   &__slots-and-tz {
     @include m.flex(column nowrap, $gap: 19.5px);
+
+    padding-bottom: 10px;
   }
 }
