@@ -1,8 +1,10 @@
-import React, { CSSProperties, memo, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { CSSProperties, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import styles from './TrustpilotComments.module.scss'
 import classNames from 'classnames/bind'
 import Text from '@/UI/Text'
 import Comment, { type CommentProps } from '@/Common/Comment'
+import useLayout from '@/hooks/useLayout'
+import { Device } from '../Container/Layout/Provider'
 
 const cx = classNames.bind(styles)
 
@@ -17,14 +19,27 @@ export type TrustpilotCommentsProps = {
 }
 
 const SLIDER_SPEED = 2000
-const ITEM_WIDTH = 364
 
 const TrustpilotComments = memo<TrustpilotCommentsProps>(({ className, title, comments }): JSX.Element => {
+  const layout = useLayout()
+
+  const ref = useRef<HTMLDivElement>(null)
+  const refComments = useRef<HTMLDivElement>(null)
+
   const [slider, setSlider] = useState(() => ({
     currIndex: 0,
     trackWidth: 0,
     width: 0,
   }))
+
+  const handleWidth = useCallback(
+    (e: HTMLDivElement | null) => e && setSlider((prevSlider) => ({ ...prevSlider, width: e.offsetWidth })),
+    [],
+  )
+  const handleTrackWidth = useCallback(
+    (e: HTMLDivElement | null) => e && setSlider((prevSlider) => ({ ...prevSlider, trackWidth: e.offsetWidth })),
+    [],
+  )
 
   useEffect(() => {
     let timer = setTimeout(function nextSlide() {
@@ -46,6 +61,19 @@ const TrustpilotComments = memo<TrustpilotCommentsProps>(({ className, title, co
     }
   }, [comments.length])
 
+  useEffect(() => {
+    const listener = () => {
+      ref.current && handleTrackWidth(ref.current)
+      refComments.current && handleWidth(refComments.current)
+    }
+
+    listener()
+
+    window.addEventListener('resize', listener)
+
+    return () => window.removeEventListener('resize', listener)
+  }, [handleWidth, handleTrackWidth])
+
   const commentsProps = useMemo(() => {
     return comments.map(({ id, ...comment }, index) => {
       let active = slider.currIndex === index ? 'trustpilotComments__comment--active' : null
@@ -57,27 +85,23 @@ const TrustpilotComments = memo<TrustpilotCommentsProps>(({ className, title, co
     })
   }, [comments, slider])
 
-  const handleWidth = useCallback(
-    (e: HTMLDivElement | null) => e && setSlider((prevSlider) => ({ ...prevSlider, width: e.offsetWidth })),
-    [],
-  )
-  const handleTrackWidth = useCallback(
-    (e: HTMLDivElement | null) => e && setSlider((prevSlider) => ({ ...prevSlider, trackWidth: e.offsetWidth })),
-    [],
-  )
-
   const commentsStyle: CSSProperties = {}
 
   if (slider.width > slider.trackWidth) {
-    commentsStyle.transform = `translate(-${slider.currIndex * ITEM_WIDTH}px, 0)`
+    let itemWidth = '364px'
+    if (layout.device === ('mobile' as Device.MOBILE)) {
+      itemWidth = 'calc(100vw - 32px + 12px)'
+    }
+
+    commentsStyle.transform = `translate(calc(-${slider.currIndex} * ${itemWidth}), 0)`
   }
 
   return (
-    <div ref={handleTrackWidth} className={cx('trustpilotComments', className)}>
+    <div ref={ref} className={cx('trustpilotComments', className)}>
       <Text className={cx('trustpilotComments__title')} size="medium">
         {title}
       </Text>
-      <div ref={handleWidth} className={cx('trustpilotComments__comments')} style={commentsStyle}>
+      <div ref={refComments} className={cx('trustpilotComments__comments')} style={commentsStyle}>
         {commentsProps}
       </div>
     </div>

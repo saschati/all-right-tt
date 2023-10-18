@@ -1,4 +1,5 @@
 @use '@/styles/core/functions' as f;
+@use '@/styles/core/screen' as s;
 
 .layout {
   --_header-height: 62px;
@@ -15,12 +16,10 @@
     ' .    header               .' f.v(_header-height)
     ' .    .                    .' f.v(--_header-indentation)
     ' .    content              .' minmax(f.v(_content-min-height), 1fr)
-    / auto minmax(auto, 1200px) auto;
+    / auto minmax(auto, 944px) auto;
 
   padding-block: f.v(_content-padding-top) f.v(_content-padding-bottom);
   margin: 0 auto;
-
-  width: 944px;
 
   &__header {
     grid-area: header;
@@ -28,5 +27,17 @@
 
   &__content {
     grid-area: content;
+  }
+
+  // ADAPTIVE
+  @include s.tablet {
+    padding-inline: 24px;
+  }
+
+  @include s.mobile {
+    padding-inline: 16px;
+    --_content-padding-top: 24px;
+    --_content-padding-bottom: 64px;
+    --_header-indentation: 32px;
   }
 }

@@ -2,9 +2,8 @@ import React, { useLayoutEffect, useMemo, useState } from 'react'
 import { Device, LayoutContext, type LayoutContextValue } from './LayoutContext'
 
 const DISPLAY = {
-  LAPTOP: 1199,
-  TABLET: 992,
-  MOBILE: 768,
+  TABLE: 1023,
+  MOBILE: 543,
 }
 
 const LayoutProvider: React.FC<React.PropsWithChildren> = ({ children }): JSX.Element => {
@@ -17,11 +16,9 @@ const LayoutProvider: React.FC<React.PropsWithChildren> = ({ children }): JSX.El
       const width = window.innerWidth
       const height = window.innerHeight
 
-      if (width >= DISPLAY.LAPTOP) {
-        device = Device.DESCTOP
-      } else if (width >= DISPLAY.TABLET) {
-        device = Device.LAPTOP
-      } else if (width >= DISPLAY.MOBILE) {
+      if (width > DISPLAY.TABLE) {
+        device = Device.DESKTOP
+      } else if (width > DISPLAY.MOBILE) {
         device = Device.TABLET
       } else {
         device = Device.MOBILE
@@ -43,7 +40,7 @@ const LayoutProvider: React.FC<React.PropsWithChildren> = ({ children }): JSX.El
 
   const context = useMemo(() => {
     return {
-      device: device || Device.DESCTOP,
+      device: device || Device.DESKTOP,
       size,
     }
   }, [device, size])

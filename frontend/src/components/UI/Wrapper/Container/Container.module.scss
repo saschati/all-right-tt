@@ -1,5 +1,6 @@
 @use '@/styles/core/functions' as f;
 @use '@/styles/core/mixin' as m;
+@use '@/styles/core/screen' as s;
 
 .container {
   --_container-width: 400px;
@@ -25,5 +26,10 @@
         --_container-width: 400px;
       }
     }
+  }
+
+  // ADAPTIVE
+  @include s.mobile {
+    --_container-width: auto;
   }
 }

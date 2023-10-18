@@ -1,5 +1,6 @@
 @use '@/styles/core/functions' as f;
 @use '@/styles/core/mixin' as m;
+@use '@/styles/core/screen' as s;
 
 .trustpilotComments {
   @include m.flex(column nowrap, $ai: center, $gap: 16px);
@@ -33,6 +34,20 @@
 
     &--active {
       opacity: 1;
+    }
+  }
+
+  @include s.mobile {
+    width: 100vw;
+
+    margin-left: -16px;
+    padding: 16px;
+
+    border-radius: unset;
+
+    &__comment {
+      min-height: 274px;
+      max-width: calc(100vw - 32px);
     }
   }
 }

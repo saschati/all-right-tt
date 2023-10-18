@@ -1,7 +1,5 @@
-$mobile: 479px; // Початорк розширення для телефонів
-$tablet: 767px; // Початорк розширення для середніх дісплеїв планшетів
-$laptop: 991px; // Початорк розширення для великих дісплеїв ноутбуків
-$desktop: 1199px; // Початорк розширення для дісплеїв десктопів
+$mobile: 543px; // Початорк розширення для телефонів
+$tablet: 1023px; // Початорк розширення для великих дісплеїв ноутбуків
 
 @mixin mobile {
   @media screen and (max-width: $mobile) {
@@ -11,18 +9,6 @@ $desktop: 1199px; // Початорк розширення для дісплеї
 
 @mixin tablet {
   @media screen and (max-width: $tablet) {
-    @content;
-  }
-}
-
-@mixin laptop {
-  @media screen and (max-width: $laptop) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media screen and (max-width: $desktop) {
     @content;
   }
 }
