@@ -1,5 +1,6 @@
 @use 'src/styles/core/functions' as f;
 @use 'src/styles/core/mixin' as m;
+@use 'core/config.scss' as c;
 
 .phone {
   @include m.flex($ai: center);
@@ -47,7 +48,8 @@
 
     margin-left: 48px;
 
-    color: f.color(dark);
+    font-family: c.fonts(base);
+    @include m.text(f.size(18px), f.color(dark), f.lh(22px), 500);
 
     &::placeholder {
       color: f.color(gray-3);

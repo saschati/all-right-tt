@@ -1,29 +1,49 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styles from './QuizWithPhone.module.scss'
 import classNames from 'classnames/bind'
 import Quiz, { type QuizProps } from '@/Common/Quiz'
-import { PhoneInput, PhoneInputProps } from '@/UI/Form/Input'
-import Button, { ButtonProps } from '@/UI/Button'
 import Privacy, { PrivacyProps } from '@/Common/Privacy'
+import { FormikButton, type FormikButtonProps, FormikForm, type FormikFormProps, FormikPhoneInput } from '../Formik'
+import Yup from '@/utils/yup'
 
 const cx = classNames.bind(styles)
 
 export type QuizWithPhoneProps = Omit<QuizProps, 'className'> & {
   className?: string
-  phone: PhoneInputProps
-  button: ButtonProps
+  phone?: string
+  button: FormikButtonProps
   privacy: PrivacyProps
+  onSubmit: FormikFormProps<Values, object>['onSubmit']
 }
 
-const QuizWithPhone: React.FC<QuizWithPhoneProps> = ({ className, question, phone, button, privacy }): JSX.Element => {
+type Values = {
+  phone?: string
+}
+
+const validationSchema = Yup.object().shape({
+  phone: Yup.string().phone().required(),
+})
+
+const QuizWithPhone: React.FC<QuizWithPhoneProps> = ({
+  className,
+  question,
+  phone,
+  button,
+  privacy,
+  onSubmit,
+}): JSX.Element => {
+  const initialValues: Values = useMemo(() => ({ phone: phone || '' }), [phone])
+
   return (
-    <Quiz question={question}>
-      <div className={cx('quizWithPhone', className)}>
-        <PhoneInput {...phone} />
-        <Button {...button} />
-        <Privacy {...privacy} />
-      </div>
-    </Quiz>
+    <FormikForm initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+      <Quiz question={question}>
+        <div className={cx('quizWithPhone', className)}>
+          <FormikPhoneInput name="phone" />
+          <FormikButton disableOnInvalid {...button} />
+          <Privacy {...privacy} />
+        </div>
+      </Quiz>
+    </FormikForm>
   )
 }
 

@@ -17,7 +17,7 @@ const Privacy: React.FC<PrivacyProps> = ({ className, text }): JSX.Element => {
       <div className={cx('privacy__icon')}>
         <ShieldLock />
       </div>
-      <Text className={cx('privacy__text')} size="very-small">
+      <Text className={cx('privacy__text')} size="small">
         {text}
       </Text>
     </div>
