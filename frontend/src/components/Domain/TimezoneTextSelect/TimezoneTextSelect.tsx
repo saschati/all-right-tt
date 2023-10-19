@@ -6,9 +6,11 @@ export type TimezoneTextSelectProps = Omit<TextSelectProps, 'options'>
 
 const options: TextSelectProps['options'] = tzFactory()
 
-const TimezoneTextSelect = memo<TimezoneTextSelectProps>(({ value, ...rest }): JSX.Element => {
-  return <TextSelect options={options} value={value as string} {...rest} />
-})
+const TimezoneTextSelect: React.FC<TimezoneTextSelectProps> = memo<TimezoneTextSelectProps>(
+  ({ value, ...rest }): JSX.Element => {
+    return <TextSelect options={options} value={value as string} {...rest} />
+  },
+)
 
 TimezoneTextSelect.displayName = 'TimezoneTextSelect'
 

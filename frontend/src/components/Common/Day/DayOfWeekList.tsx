@@ -16,17 +16,19 @@ export type DayOfWeekListProps = {
   onDayClick: (value: DayOfWeek['id'], day: DayOfWeek) => void
 }
 
-const DayOfWeekList = memo<DayOfWeekListProps>(({ className, dayOfWeeks, value, onDayClick }): JSX.Element => {
-  const dayOfWeeksComp = useMemo(() => {
-    return dayOfWeeks.map(({ id, ...dayOfWeek }) => (
-      <div key={id} className="cursor-pointer" onClick={() => onDayClick(id, { id, ...dayOfWeek })}>
-        <Day {...dayOfWeek} isActive={value === id} />
-      </div>
-    ))
-  }, [dayOfWeeks, value, onDayClick])
+const DayOfWeekList: React.FC<DayOfWeekListProps> = memo<DayOfWeekListProps>(
+  ({ className, dayOfWeeks, value, onDayClick }): JSX.Element => {
+    const dayOfWeeksComp = useMemo(() => {
+      return dayOfWeeks.map(({ id, ...dayOfWeek }) => (
+        <div key={id} className="cursor-pointer" onClick={() => onDayClick(id, { id, ...dayOfWeek })}>
+          <Day {...dayOfWeek} isActive={value === id} />
+        </div>
+      ))
+    }, [dayOfWeeks, value, onDayClick])
 
-  return <div className={cx('dayOfWeeks', className)}>{dayOfWeeksComp}</div>
-})
+    return <div className={cx('dayOfWeeks', className)}>{dayOfWeeksComp}</div>
+  },
+)
 
 DayOfWeekList.displayName = 'DayOfWeekList'
 

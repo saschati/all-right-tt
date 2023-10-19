@@ -13,65 +13,67 @@ export type ButtonWithEmojiProps = {
   onClick: (isActive: boolean) => void
 }
 
-const ButtonWithEmoji = memo<ButtonWithEmojiProps>(({ className, text, emoji, onClick }): JSX.Element => {
-  const [isClicked, setIsClicked] = useState(false)
-  const [isActive, setIsActive] = useState(false)
-  const [width, setWidth] = useState(0)
+const ButtonWithEmoji: React.FC<ButtonWithEmojiProps> = memo<ButtonWithEmojiProps>(
+  ({ className, text, emoji, onClick }): JSX.Element => {
+    const [isClicked, setIsClicked] = useState(false)
+    const [isActive, setIsActive] = useState(false)
+    const [width, setWidth] = useState(0)
 
-  const handleClick = () => {
-    if (isActive) {
-      setIsActive(false)
-      onClick(false)
-    } else {
-      setIsClicked(true)
+    const handleClick = () => {
+      if (isActive) {
+        setIsActive(false)
+        onClick(false)
+      } else {
+        setIsClicked(true)
+      }
     }
-  }
 
-  const handleWidth = (e: HTMLDivElement | null) => e && setWidth(e.offsetWidth)
-  const handleAnimationEnd = () => {
-    setIsClicked(false)
-    setIsActive(true)
-    onClick(true)
-  }
+    const handleWidth = (e: HTMLDivElement | null) => e && setWidth(e.offsetWidth)
+    const handleAnimationEnd = () => {
+      setIsClicked(false)
+      setIsActive(true)
+      onClick(true)
+    }
 
-  const waveStyle: CSSProperties = {
-    height: width,
-    width,
-    top: `calc(50% - ${width / 2}px)`,
-  }
+    const waveStyle: CSSProperties = {
+      height: width,
+      width,
+      top: `calc(50% - ${width / 2}px)`,
+    }
 
-  const classes: string[] = []
+    const classes: string[] = []
 
-  if (isClicked === true) {
-    classes.push('buttonWithEmoji--clicked')
-  }
+    if (isClicked === true) {
+      classes.push('buttonWithEmoji--clicked')
+    }
 
-  if (isActive === true) {
-    classes.push('buttonWithEmoji--active')
-  }
+    if (isActive === true) {
+      classes.push('buttonWithEmoji--active')
+    }
 
-  return (
-    <div
-      ref={handleWidth}
-      onAnimationEnd={handleAnimationEnd}
-      className={cx('cursor-pointer', 'buttonWithEmoji', ...classes, className)}
-      onClick={handleClick}
-    >
-      <div className={cx('buttonWithEmoji__container')}>
-        {/* Animation elements */}
-        <div className={cx('buttonWithEmoji__animation-wave')} style={waveStyle} />
-        {/* Animation elements */}
+    return (
+      <div
+        ref={handleWidth}
+        onAnimationEnd={handleAnimationEnd}
+        className={cx('cursor-pointer', 'buttonWithEmoji', ...classes, className)}
+        onClick={handleClick}
+      >
+        <div className={cx('buttonWithEmoji__container')}>
+          {/* Animation elements */}
+          <div className={cx('buttonWithEmoji__animation-wave')} style={waveStyle} />
+          {/* Animation elements */}
 
-        <div className={cx('buttonWithEmoji__content')}>
-          <Emoji type={emoji} />
-          <Text className={cx('buttonWithEmoji__text')} size="default">
-            {text}
-          </Text>
+          <div className={cx('buttonWithEmoji__content')}>
+            <Emoji type={emoji} />
+            <Text className={cx('buttonWithEmoji__text')} size="default">
+              {text}
+            </Text>
+          </div>
         </div>
       </div>
-    </div>
-  )
-})
+    )
+  },
+)
 
 ButtonWithEmoji.displayName = 'ButtonWithEmoji'
 

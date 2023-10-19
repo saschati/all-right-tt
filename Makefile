@@ -31,9 +31,10 @@ down: docker-down ## Project down
 restart: down docker-build up ## Project restart
 
 ## —— Audit project —————————————————————————————————————————————————————————————————————
-check: lint test ## Project restart
+check: lint analize test ## Project restart
 test: frontend-test ## Run testing
 lint: frontend-lint ## Run linters
+analize: frontend-analize ## Run analizes
 
 docker-up:
 	$(docker_compose_bin) -f docker-compose.yml $(docker_compose_override) up -d
@@ -72,6 +73,9 @@ frontend-node-cli: ## Run node container command. Args: cmd - any command line
 frontend-lint: ## Run lints
 	$(docker_compose_bin) -f docker-compose.yml $(docker_compose_override) run --rm frontend-node-cli yarn stylelint
 	$(docker_compose_bin) -f docker-compose.yml $(docker_compose_override) run --rm frontend-node-cli yarn eslint
+
+frontend-analize: ## Run lints
+	$(docker_compose_bin) -f docker-compose.yml $(docker_compose_override) run --rm frontend-node-cli npx tsc
 
 frontend-test: ## Run test
 	echo "All tests is done!";

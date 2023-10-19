@@ -1,0 +1,17 @@
+version: '3.8'
+
+x-env-front: &github-env-variables
+  VITE_APP_URL: https://saschati.github.io/all-right-tt/
+  VITE_API_URL: https://saschati.github.io/all-right-tt/
+
+services:
+
+  github-node-cli:
+      build:
+        context: .github/docker
+        dockerfile: node/Dockerfile
+      container_name: github-node-cli
+      environment:
+        <<: *github-env-variables
+      volumes:
+        - ./frontend:/app

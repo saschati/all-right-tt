@@ -14,20 +14,22 @@ export type AlmostDoneProps = {
   button: ButtonProps
 }
 
-const AlmostDone = memo<AlmostDoneProps>(({ className, title, description, button }): JSX.Element => {
-  return (
-    <div className={cx('almostDone', className)}>
-      <Text size="medium">{title}</Text>
-      <div className={cx('almostDone__preview')}>
-        <img src={mascot} alt="Mascot" />
+const AlmostDone: React.FC<AlmostDoneProps> = memo<AlmostDoneProps>(
+  ({ className, title, description, button }): JSX.Element => {
+    return (
+      <div className={cx('almostDone', className)}>
+        <Text size="medium">{title}</Text>
+        <div className={cx('almostDone__preview')}>
+          <img src={mascot} alt="Mascot" />
+        </div>
+        <Text className={cx('almostDone__desc')} position="center">
+          {description}
+        </Text>
+        <Button {...button} />
       </div>
-      <Text className={cx('almostDone__desc')} position="center">
-        {description}
-      </Text>
-      <Button {...button} />
-    </div>
-  )
-})
+    )
+  },
+)
 
 AlmostDone.displayName = 'AlmostDone'
 
