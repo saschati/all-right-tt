@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from '@/app/store/redux/store'
 import env from '@/config/env'
@@ -7,7 +7,7 @@ import env from '@/config/env'
 const App: React.FC<React.PropsWithChildren> = ({ children }): JSX.Element => {
   return (
     <Provider store={store}>
-      <BrowserRouter basename={env.routeBaseName}>{children}</BrowserRouter>
+      <HashRouter basename={env.routeBaseName}>{children}</HashRouter>
     </Provider>
   )
 }

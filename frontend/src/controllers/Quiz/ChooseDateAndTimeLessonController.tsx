@@ -39,8 +39,11 @@ const ChooseDateAndTimeLessonController: React.FC = (): JSX.Element => {
   const dayOfWeek = useMemo(() => {
     let currTime = dayjs().tz(currTz)
 
-    if (currTime.hour() > TIME_END_HOUR - 1) {
-      currTime = currTime.add(24 - currTime.hour())
+    if (
+      currTime.hour() > TIME_END_HOUR - 1 ||
+      (currTime.hour() === TIME_END_HOUR - 1 && currTime.minute() > TIME_PERIOD)
+    ) {
+      currTime = currTime.add(24 - currTime.hour(), 'hours')
     }
 
     const dayOfWeeks = dayOfWeekFactory(currTime, currTime.add(7, 'day'), currTime)
