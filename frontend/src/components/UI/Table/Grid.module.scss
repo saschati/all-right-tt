@@ -1,0 +1,37 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+@use 'src/styles/core/screen' as s;
+
+/**
+ * Custom variable:
+ * --grid-col: number; Count grid column
+ */
+.grid {
+  // Setting component section
+  display: grid;
+  grid-auto-rows: minmax(48px, max-content);
+  grid-template-columns: repeat(f.v(grid-col), auto);
+  gap: 2px;
+  width: max-content;
+  overflow: hidden;
+
+  background: f.color(gray-2);
+
+  &__row {
+    display: contents;
+  }
+
+  &__column {
+    padding: 16px;
+    justify-content: flex-end;
+    background: f.color(white);
+  }
+
+  @include s.tablet {
+    width: calc(100vw - 48px);
+  }
+
+  @include s.mobile {
+    width: 100%;
+  }
+}

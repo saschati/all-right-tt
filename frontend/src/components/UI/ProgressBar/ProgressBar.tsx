@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useRef, useState } from 'react'
+import React, { CSSProperties } from 'react'
 import styles from './ProgressBar.module.scss'
 import classNames from 'classnames/bind'
 
@@ -10,27 +10,12 @@ export type ProgressBarProps = {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ className, percentage }): JSX.Element => {
-  const [width, setWidth] = useState(0)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const listener = () => {
-      ref.current && setWidth(ref.current?.offsetWidth)
-    }
-
-    listener()
-
-    window.addEventListener('resize', listener)
-
-    return () => window.removeEventListener('resize', listener)
-  }, [])
-
   const progressStyles: CSSProperties = {
-    width: `${(percentage / 100) * width}px`,
+    width: `${percentage}%`,
   }
 
   return (
-    <div ref={ref} className={cx('progressBar', className)}>
+    <div className={cx('progressBar', className)}>
       <div style={progressStyles} className={cx('progressBar__progress', className)} />
     </div>
   )

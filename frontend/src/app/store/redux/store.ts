@@ -3,6 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { api } from './services/api'
 import example from './slices/example/example'
 import quizStep from './slices/quiz/step'
+import quiz from './slices/quiz/quiz'
 
 export const createStore = (options?: ConfigureStoreOptions['preloadedState'] | undefined) =>
   configureStore({
@@ -10,6 +11,7 @@ export const createStore = (options?: ConfigureStoreOptions['preloadedState'] | 
       [api.reducerPath]: api.reducer,
       example,
       quizStep,
+      quiz,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
     ...options,

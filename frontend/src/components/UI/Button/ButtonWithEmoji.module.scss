@@ -28,7 +28,7 @@
 
   &:hover:not(&--active) {
     border: 1px solid f.color(gray-1);
-    box-shadow: 0px 0px 16px 1px rgba(26 10 46 / 0.05);
+    box-shadow: 0 0 16px 1px rgba(26 10 46 / 5%);
   }
 
   &--active {
@@ -61,7 +61,7 @@
   }
 
   &--clicked &__animation-wave {
-    transition: transform f.v(--_button-with-emoji-animation-time) linear;
+    transition: transform f.v(_button-with-emoji-animation-time) linear;
 
     transform: scale(1);
   }
@@ -69,21 +69,22 @@
   &--clicked &__text {
     color: f.color(fuchsia);
 
-    transition: color f.v(--_button-with-emoji-animation-time);
+    transition: color f.v(_button-with-emoji-animation-time);
   }
 
   &--clicked::before {
-    animation-name: borderBlock;
-    animation-delay: calc(0.2375 * f.v(--_button-with-emoji-animation-time));
-    animation-duration: calc(f.v(--_button-with-emoji-animation-time) * 0.7625);
+    animation-name: border-block-animation;
+    animation-delay: calc(0.2375 * f.v(_button-with-emoji-animation-time));
+    animation-duration: calc(f.v(_button-with-emoji-animation-time) * 0.7625);
     animation-timing-function: linear;
   }
 
-  @keyframes borderBlock {
+  @keyframes border-block-animation {
     from {
       transform: scaleX(0.07);
       border-block: 1px solid f.color(fuchsia-10);
     }
+
     to {
       transform: scaleX(1);
       border-block: 1px solid f.color(fuchsia);

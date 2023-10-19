@@ -37,7 +37,7 @@
   }
 
   &:hover:not(&--active) {
-    box-shadow: 0px 0px 16px 0px rgba(26 10 46 / 0.05);
+    box-shadow: 0 0 16px 0 rgba(26 10 46 / 5%);
   }
 
   &--active {
@@ -72,31 +72,33 @@
   &--clicked &__animation-wave {
     transform: scale(1);
 
-    transition: transform f.v(--_tag-animation-time) linear;
+    transition: transform f.v(_tag-animation-time) linear;
   }
 
   &--clicked &__text {
     color: f.color(fuchsia);
 
-    transition: color f.v(--_tag-animation-time);
+    transition: color f.v(_tag-animation-time);
   }
 
   &--clicked::before {
-    animation-name: borderBlock;
-    animation-delay: calc(0.2375 * f.v(--_tag-animation-time));
-    animation-duration: calc(f.v(--_tag-animation-time) * 0.7625);
+    animation-name: border-block-animation;
+    animation-delay: calc(0.2375 * f.v(_tag-animation-time));
+    animation-duration: calc(f.v(_tag-animation-time) * 0.7625);
     animation-timing-function: linear;
   }
 
-  @keyframes borderBlock {
-    from {
+  @keyframes border-block-animation {
+    0% {
       transform: scaleX(0.07);
       border-block: 1px solid f.color(fuchsia-10);
     }
+
     75% {
       border-radius: 0;
     }
-    to {
+
+    100% {
       border-radius: 28px;
       transform: scaleX(1);
       border-block: 1px solid f.color(fuchsia);

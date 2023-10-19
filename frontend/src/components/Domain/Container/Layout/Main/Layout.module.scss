@@ -6,15 +6,15 @@
   --_header-indentation: 53px;
   --_content-padding-top: 28px;
   --_content-padding-bottom: 48px;
+  --_content-padding-block: #{calc(f.v(_content-padding-top) + f.v(_content-padding-bottom))};
   --_content-min-height: #{calc(
-      f.v(window-height, 100vh) - f.v(_header-height) - f.v(_header-indentation) - f.v(_content-padding-top) -
-        f.v(_content-padding-bottom)
+      f.v(window-height, 100vh) - f.v(_header-height) - f.v(_header-indentation) - f.v(_content-padding-block)
     )};
 
   display: grid;
   grid-template:
     ' .    header               .' f.v(_header-height)
-    ' .    .                    .' f.v(--_header-indentation)
+    ' .    .                    .' f.v(_header-indentation)
     ' .    content              .' minmax(f.v(_content-min-height), 1fr)
     / auto minmax(auto, 944px) auto;
 
@@ -36,6 +36,7 @@
 
   @include s.mobile {
     padding-inline: 16px;
+
     --_content-padding-top: 24px;
     --_content-padding-bottom: 64px;
     --_header-indentation: 32px;

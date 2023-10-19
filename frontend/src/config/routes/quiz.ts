@@ -7,6 +7,7 @@ import ChildInterestedController from '@/controllers/Quiz/ChildInterestedControl
 import PreparingPersonalPlanController from '@/controllers/Quiz/PreparingPersonalPlanController'
 import EnterPhoneNumberController from '@/controllers/Quiz/EnterPhoneNumberController'
 import ChooseDateAndTimeLessonController from '@/controllers/Quiz/ChooseDateAndTimeLessonController'
+import QuizResultController from '@/controllers/Quiz/QuizResultController'
 
 export default [
   route(Path.QUIZ_QUESTION, HomeController, RouterAccess.ALL),
@@ -15,4 +16,5 @@ export default [
   route(Path.QUIZ_PREPARING_PERSONAL_PLAN, PreparingPersonalPlanController, RouterAccess.ALL),
   route(Path.QUIZ_ENTER_PHONE_NUMBER, EnterPhoneNumberController, RouterAccess.ALL),
   route(Path.QUIZ_CHOOSE_DATE_AND_TIME_LESSON, ChooseDateAndTimeLessonController, RouterAccess.ALL),
+  route(Path.QUIZ_RESULT, QuizResultController, RouterAccess.ALL),
 ]

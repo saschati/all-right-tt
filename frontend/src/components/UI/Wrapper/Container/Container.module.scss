@@ -5,7 +5,7 @@
 .container {
   --_container-width: 400px;
 
-  @include m.flex();
+  @include m.flex;
 
   &_position {
     &_default,
@@ -19,7 +19,7 @@
   }
 
   &__children {
-    width: f.v(--_container-width);
+    width: f.v(_container-width);
 
     &_size {
       &_default {

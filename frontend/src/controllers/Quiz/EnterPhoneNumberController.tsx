@@ -1,5 +1,7 @@
 import { QuizWithPhone } from '@/Domain/Quiz'
 import Container from '@/UI/Wrapper/Container'
+import { setPhone } from '@/app/store/redux/slices/quiz/quiz'
+import { store } from '@/app/store/redux/store'
 import Path from '@/config/path'
 import { STEPS_ORDER } from '@/helpers/quiz/step'
 import useStep from '@/hooks/domain/quiz/useStep'
@@ -24,7 +26,7 @@ const EnterPhoneNumberController: React.FC = (): JSX.Element => {
           text: 'We respect your privacy and are committed to protecting your personal data.',
         }}
         onSubmit={(values) => {
-          console.log('Phone', values)
+          store.dispatch(setPhone(values.phone as string))
 
           navigate(Path.QUIZ_CHOOSE_DATE_AND_TIME_LESSON)
         }}

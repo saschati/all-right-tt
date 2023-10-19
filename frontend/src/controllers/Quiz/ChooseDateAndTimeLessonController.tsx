@@ -1,5 +1,8 @@
 import { QuizWithCalendar } from '@/Domain/Quiz'
 import Container from '@/UI/Wrapper/Container'
+import { useQuizBookALessonMutation } from '@/app/store/redux/services/injects/quiz'
+import { useTypedSelector } from '@/app/store/redux/store'
+import Path from '@/config/path'
 import { dayOfWeekFactory } from '@/helpers/quiz/dayOfWeek'
 import { slotsFactory } from '@/helpers/quiz/slot'
 import { STEPS_ORDER } from '@/helpers/quiz/step'
@@ -7,6 +10,7 @@ import { currentTimezone, tzFactory } from '@/helpers/tz'
 import useStep from '@/hooks/domain/quiz/useStep'
 import dayjs from '@/utils/dayjs'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TIME_PERIOD = 30
 const TIME_END_HOUR = 18
@@ -16,8 +20,12 @@ const tzOptions = tzFactory()
 const currTimezone = currentTimezone()
 
 const ChooseDateAndTimeLessonController: React.FC = (): JSX.Element => {
+  const navigate = useNavigate()
+
   useStep(STEPS_ORDER.CHOOSE_DATE_AND_TIME_LESSON)
 
+  const phone = useTypedSelector(({ quiz }) => quiz.phone)
+  const [bookALesson] = useQuizBookALessonMutation()
   const [currTz, setCurrTz] = useState(currTimezone)
 
   const tz = useMemo(() => {
@@ -86,7 +94,14 @@ const ChooseDateAndTimeLessonController: React.FC = (): JSX.Element => {
           text: 'Book a lesson',
         }}
         onSubmit={(values) => {
-          console.log('onSubmit', values)
+          void bookALesson({
+            phone,
+            date: values.dayOfWeek as string,
+            time: values.slot as string,
+            timezone: values.tz as string,
+          })
+
+          navigate(Path.QUIZ_RESULT)
         }}
       />
     </Container>

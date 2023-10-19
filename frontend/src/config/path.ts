@@ -7,6 +7,7 @@ const enum Path {
   QUIZ_PREPARING_PERSONAL_PLAN = '/quiz/preparing-personal-plan',
   QUIZ_ENTER_PHONE_NUMBER = '/quiz/enter-phone-number',
   QUIZ_CHOOSE_DATE_AND_TIME_LESSON = '/quiz/choose-date-and-time-lesson',
+  QUIZ_RESULT = '/quiz/result',
 }
 
 export default Path

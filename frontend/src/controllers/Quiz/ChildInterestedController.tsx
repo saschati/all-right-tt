@@ -5,12 +5,13 @@ import useStep from '@/hooks/domain/quiz/useStep'
 import { useNavigate } from 'react-router-dom'
 import Path from '@/config/path'
 import { STEPS_ORDER } from '@/helpers/quiz/step'
-import { useQuizGetInterestsQuery } from '@/app/store/redux/services/injects/quiz'
+import { useQuizGetInterestsQuery, useQuizSaveInterestsMutation } from '@/app/store/redux/services/injects/quiz'
 
 const ChildInterestedController: React.FC = (): JSX.Element => {
   useStep(STEPS_ORDER.CHILD_INTERESTED)
   const navigate = useNavigate()
   const { data } = useQuizGetInterestsQuery()
+  const [saveInterests] = useQuizSaveInterestsMutation()
 
   const [checkedTags, setCheckedTags] = useState<number[]>([])
 
@@ -32,7 +33,11 @@ const ChildInterestedController: React.FC = (): JSX.Element => {
         button={{
           text: 'Continue',
           disabled: checkedTags.length === 0,
-          onClick: () => navigate(Path.QUIZ_PREPARING_PERSONAL_PLAN),
+          onClick: () => {
+            void saveInterests({ interests: checkedTags })
+
+            navigate(Path.QUIZ_PREPARING_PERSONAL_PLAN)
+          },
         }}
       />
     </Container>

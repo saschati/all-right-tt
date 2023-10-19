@@ -49,6 +49,7 @@
     margin-left: 48px;
 
     font-family: c.fonts(base);
+
     @include m.text(f.size(18px), f.color(dark), f.lh(22px), 500);
 
     &::placeholder {
