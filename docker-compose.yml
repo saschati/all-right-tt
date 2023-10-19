@@ -3,6 +3,7 @@ version: '3.8'
 x-env-front: &front-env-variables
     VITE_APP_URL: http://localhost
     VITE_API_URL: http://localhost
+    VITE_APP_ROUTER_BASE_NAME: /
 
 services:
 
