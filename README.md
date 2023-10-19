@@ -1,4 +1,4 @@
-<h1 align="center">React App</h1>
+<h1 align="center">All Right TT</h1>
 <hr/>
 
 ## Global dependencies
@@ -9,10 +9,6 @@
 - !LEGACY: [docker-compose](https://docs.docker.com/compose/install/)
 <hr/>
 
-## Download all modules
-
-```git submodule update --init --recursive```
-
 ## Init project
 
 ```make init```
@@ -20,6 +16,7 @@
 ## Host info
 
 FRONTEND: [http://localhost/](http://localhost/) <br />
+GH PAGES: [https://saschati.github.io/all-right-tt/](https://saschati.github.io/all-right-tt/) <br />
 
 ### Available commands
 ```make help```
