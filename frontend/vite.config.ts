@@ -11,6 +11,7 @@ const showHostConfig = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [svgr(), react()],
   server: {
     watch: {
