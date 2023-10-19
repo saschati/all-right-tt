@@ -1,16 +1,17 @@
 import PersonalPlan from '@/Domain/Quiz/PersonalPlan'
-import { CommentType } from '@/Domain/Trustpilot/TrustpilotComments'
 import Container from '@/UI/Wrapper/Container'
 import React, { useEffect, useMemo, useState } from 'react'
-import avatar from '@/assets/img/comment/avatar.png'
 import useStep from '@/hooks/domain/quiz/useStep'
 import { STEPS_ORDER } from '@/helpers/quiz/step'
 import { useNavigate } from 'react-router-dom'
 import Path from '@/config/path'
+import { useTrustpilotGetCommentsQuery } from '@/app/store/redux/services/injects/trustpilot'
 
 const PreparingPersonalPlanController: React.FC = (): JSX.Element => {
   useStep(STEPS_ORDER.PREPARING_PERSONAL_PLAN)
   const navigate = useNavigate()
+
+  const { data } = useTrustpilotGetCommentsQuery()
 
   const [currProgression, setCurrProgression] = useState(0)
   const progressStages = useMemo(() => {
@@ -44,41 +45,6 @@ const PreparingPersonalPlanController: React.FC = (): JSX.Element => {
     }
   }, [progressStages.length, navigate])
 
-  const comments: CommentType[] = useMemo(() => {
-    return [
-      {
-        id: 1,
-        title: 'The child really likes it!',
-        comment:
-          'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
-        user: {
-          avatar: avatar,
-          name: 'Raluca and Sara',
-        },
-      },
-      {
-        id: 2,
-        title: 'The child really likes it!',
-        comment:
-          'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
-        user: {
-          avatar: avatar,
-          name: 'Raluca and Sara',
-        },
-      },
-      {
-        id: 3,
-        title: 'The child really likes it!',
-        comment:
-          'We attend both individual lessons and group conversation clubs (3-6 children at a time). Lessons in a fun way. Highly recommend.',
-        user: {
-          avatar: avatar,
-          name: 'Raluca and Sara',
-        },
-      },
-    ]
-  }, [])
-
   return (
     <Container>
       <PersonalPlan
@@ -87,7 +53,7 @@ const PreparingPersonalPlanController: React.FC = (): JSX.Element => {
         currProgression={currProgression}
         trustpilot={{
           title: 'Parents rate AllRight “Excellent” on Trustpilot',
-          comments,
+          comments: data?.comments || [],
         }}
       />
     </Container>

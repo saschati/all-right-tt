@@ -33,9 +33,11 @@ const PersonalPlan: React.FC<PersonalPlanProps> = ({
         <CircleProgressBar percentage={percent} />
         <TextSwapper items={progressStages} currIndex={currProgression} />
       </div>
-      <div className={cx('personalPlan__trustpilot')}>
-        <TrustpilotComments {...trustpilot} />
-      </div>
+      {trustpilot.comments.length > 0 && (
+        <div className={cx('personalPlan__trustpilot')}>
+          <TrustpilotComments {...trustpilot} />
+        </div>
+      )}
     </div>
   )
 }

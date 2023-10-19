@@ -20,6 +20,7 @@
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.7.0",
     "sass": "^1.57.1",
+    "timezones-list": "^3.0.2",
     "vite-plugin-svgr": "^4.1.0",
     "web-vitals": "^3.3.0",
     "yup": "^1.0.2"

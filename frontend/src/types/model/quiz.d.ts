@@ -12,3 +12,9 @@ export interface Question {
   description?: string
   answers: Answer[]
 }
+
+export interface Interest {
+  id: number
+  name: string
+  icon: string
+}

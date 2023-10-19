@@ -3765,6 +3765,11 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
+timezones-list@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/timezones-list/-/timezones-list-3.0.2.tgz#8780d595571459fb8f6bc2885908d1fe0a96ceca"
+  integrity sha512-I698hm6Jp/xxkwyTSOr39pZkYKETL8LDJeSIhjxXBfPUAHM5oZNuQ4o9UK3PSkDBOkjATecSOBb3pR1IkIBUsg==
+
 tiny-case@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-case/-/tiny-case-1.0.3.tgz#d980d66bc72b5d5a9ca86fb7c9ffdb9c898ddd03"

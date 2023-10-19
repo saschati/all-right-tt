@@ -5,8 +5,9 @@ import minecraft from '@/assets/img/icons/interest/minecraft.png'
 import painting from '@/assets/img/icons/interest/painting.png'
 import roblox from '@/assets/img/icons/interest/roblox.png'
 import traveling from '@/assets/img/icons/interest/traveling.png'
+import type { Interest } from '@/types/model/quiz'
 
-export const tags = [
+export const interests: Interest[] = [
   {
     id: 1,
     name: 'Minecraft',

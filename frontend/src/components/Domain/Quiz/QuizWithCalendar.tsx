@@ -19,13 +19,19 @@ const cx = classNames.bind(styles)
 
 export type DayOfWeekType = Omit<DayOfWeekListProps, 'onDayClick'> & {
   value?: string | number
+  onDayClick?: DayOfWeekListProps['onDayClick']
+}
+
+export type TextSelectType = Omit<TextSelectProps, 'onSelect'> & {
+  value?: string | number
+  onSelect?: TextSelectProps['onSelect']
 }
 
 export type QuizWithCalendarProps = {
   title: string
   dayOfWeek: DayOfWeekType
   slot: Omit<FormikSelectProps, 'name'>
-  tz: Omit<TextSelectProps, 'onSelect'>
+  tz: TextSelectType
   button: FormikButtonProps
   onSubmit: FormikFormProps<Values, object>['onSubmit']
 }
@@ -44,39 +50,66 @@ const QuizWithCalendar: React.FC<QuizWithCalendarProps> = ({
   button,
   onSubmit,
 }): JSX.Element => {
+  const { value: slotValue, ...slotProps } = slot
+  const { value: dayOfWeekValue, onDayClick: onDayClickDOW, ...dayOfWeekProps } = dayOfWeek
+  const { value: tzValue, onSelect: onSelectTZ, ...tzProps } = tz
+
   const initialValues: Values = useMemo(
     () => ({
-      dayOfWeek: dayOfWeek.value,
-      slot: slot.value,
-      tz: tz.value,
+      dayOfWeek: dayOfWeekValue,
+      slot: slotValue,
+      tz: tzValue,
     }),
-    [dayOfWeek.value, slot.value, tz.value],
+    [dayOfWeekValue, slotValue, tzValue],
   )
 
+  const dayOfWeekIds = useMemo(() => {
+    return dayOfWeek.dayOfWeeks.map((dayOfWeek) => dayOfWeek.id)
+  }, [dayOfWeek.dayOfWeeks])
+
+  const slotIds = useMemo(() => {
+    return slot.options.map((option) => option.value as number)
+  }, [slot.options])
+
+  const tzIds = useMemo(() => {
+    return tz.options.map((option) => option.value as number)
+  }, [tz.options])
+
   const validationSchema = Yup.object().shape({
-    phone: Yup.string().phone().required(),
+    dayOfWeek: Yup.mixed().required().oneOf(dayOfWeekIds),
+    slot: Yup.mixed().required().oneOf(slotIds),
+    tz: Yup.mixed().required().oneOf(tzIds),
   })
 
   return (
-    <FormikForm initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+    <FormikForm
+      initialValues={initialValues}
+      enableReinitialize={true}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
       <Quiz question={{ title }}>
         <div className={cx('quizWithCalendar')}>
           <FormikConsumer>
             {(context) => (
               <>
                 <DayOfWeekList
-                  {...dayOfWeek}
+                  {...dayOfWeekProps}
                   value={(context.values as Values).dayOfWeek}
-                  onDayClick={(value) => {
+                  onDayClick={(value, day) => {
                     void context.setFieldValue('dayOfWeek', value)
+                    onDayClickDOW && onDayClickDOW(value, day)
                   }}
                 />
                 <div className={cx('quizWithCalendar__slots-and-tz')}>
-                  <FormikSelect name="slot" {...slot} />
+                  <FormikSelect name="slot" {...slotProps} />
                   <TextSelect
-                    {...tz}
+                    {...tzProps}
                     value={(context.values as Values).tz as ValueType}
-                    onSelect={(value) => void context.setFieldValue('tz', value)}
+                    onSelect={(value, option) => {
+                      void context.setFieldValue('tz', value)
+                      onSelectTZ && onSelectTZ(value, option)
+                    }}
                   />
                 </div>
               </>

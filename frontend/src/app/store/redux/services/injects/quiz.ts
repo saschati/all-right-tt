@@ -1,6 +1,7 @@
-import { Question } from '@/types/model/quiz'
+import { Interest, Question } from '@/types/model/quiz'
 import { api } from '../api'
 import { questions } from '@/mocks/quiz/question'
+import { interests } from '@/mocks/quiz/interests'
 
 interface GetQuestionByIdResponse {
   question: Question
@@ -9,6 +10,10 @@ interface GetQuestionByIdResponse {
 
 interface GetQuestionByIdQuery {
   id: number
+}
+
+interface GetInterestsResponse {
+  interests: Interest[]
 }
 
 export const quizApi = api.injectEndpoints({
@@ -25,7 +30,13 @@ export const quizApi = api.injectEndpoints({
       },
       providesTags: ['QuizQuestion'],
     }),
+    quizGetInterests: build.query<GetInterestsResponse, void>({
+      queryFn() {
+        return { data: { interests } }
+      },
+      providesTags: ['QuizInterest'],
+    }),
   }),
 })
 
-export const { useQuizGetQuestionByIdQuery } = quizApi
+export const { useQuizGetQuestionByIdQuery, useQuizGetInterestsQuery } = quizApi

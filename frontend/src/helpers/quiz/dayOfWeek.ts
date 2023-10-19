@@ -3,10 +3,9 @@ import dayjs from '@/utils/dayjs'
 export const dayOfWeekFactory = (
   dateFrom: dayjs.ConfigType,
   dateTo: dayjs.ConfigType,
-  dateActiveDay?: dayjs.Dayjs,
+  dateActiveDay: dayjs.Dayjs,
   idFormat: string = 'DD.MM.YYYY',
 ) => {
-  const currDate = dayjs().format(idFormat)
   const startDate = dayjs(dateFrom)
   const days = dayjs(dateTo).diff(startDate, 'days')
 
@@ -15,11 +14,7 @@ export const dayOfWeekFactory = (
   }
 
   const isActive = (iDay: dayjs.Dayjs) => {
-    if (dateActiveDay) {
-      return dateActiveDay.format(idFormat) === getId(iDay)
-    }
-
-    return iDay.format(idFormat) === currDate
+    return getId(dateActiveDay) === getId(iDay)
   }
 
   const dayOfWeeks = []
